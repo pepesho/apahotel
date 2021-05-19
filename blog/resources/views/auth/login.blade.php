@@ -19,7 +19,7 @@
     </p>
     <p>または</p>
     <p>
-        <a href="{{ route('register') }}">会員登録</a>
+        <a href="{{ route('register') }}">職員登録</a>
     </p>
 </form>
 @endsection

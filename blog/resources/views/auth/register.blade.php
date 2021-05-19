@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>会員登録</h1>
+<h1>職員登録</h1>
 @include('commons/flash')
 <form action="{{ route('register') }}" method="post">
     @csrf
