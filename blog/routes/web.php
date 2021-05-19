@@ -16,3 +16,7 @@ Auth::routes([
     'reset' => false,
     'confirm' => false,
 ]);
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('home','HomeController@index')->name('home');
+    Route::resource('users', 'UserController');
+});
