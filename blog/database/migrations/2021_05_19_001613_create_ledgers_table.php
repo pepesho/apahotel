@@ -15,15 +15,15 @@ class CreateLedgersTable extends Migration
     {
         Schema::create('ledgers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('ISBN_id')->unsigned()->index();
+            $table->bigInteger('ISBN_id')->unsigned()->index();
             $table->string('title');
             $table->date('arrival_day');
 
             //外部キー設定
-            $table->foreign('ISBN_id')->references('ISBN_id')->on('catalogs')->onDelete('cascade');
+            $table->foreign('ISBN_id')->references('id')->on('catalogs')->onDelete('cascade');
 
-            //ユニーク設定
-            $table->unique('ISBN_id');
+            // //ユニーク設定
+            // $table->unique('ISBN_id');
         });
     }
 

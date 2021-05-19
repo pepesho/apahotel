@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Catalog extends Model
 {
     //
+    protected $fillable = ['ISBN_id', 'title', 'genre_id', 'author', 'publisher', 'publisher_date'];
     public function genre()
     {
         return $this->belongsTo(Genre::class);
