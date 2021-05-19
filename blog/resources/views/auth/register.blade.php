@@ -25,7 +25,7 @@
             name="password_confirmation" value=""></label>
     </p>
     <p>
-        <button type="submit">会員登録</button>
+        <button type="submit">職員登録</button>
     </p>
     <p>または</p>
     <p>
