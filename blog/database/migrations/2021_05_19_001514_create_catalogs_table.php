@@ -14,7 +14,8 @@ class CreateCatalogsTable extends Migration
     public function up()
     {
         Schema::create('catalogs', function (Blueprint $table) {
-            $table->increments('ISBN_id');
+            $table->bigIncrements('id');
+            $table->bigInteger('ISBN_id');
             $table->string('title');
             $table->bigInteger('genre_id')->unsigned()->index();
             $table->string('author');
