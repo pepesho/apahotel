@@ -19,8 +19,8 @@ class BorrowController extends Controller
     public function index()
     {
         //
-        $borrows = Member::all();
-        return view('borrows.index',);
+        $borrow = Member::all();
+        return view('borrows.index',['borrow' => $borrow]);
     }    
     /**
      * Show the form for creating a new resource.
@@ -51,7 +51,7 @@ class BorrowController extends Controller
      */
     public function show(Borrow $borrow)
     {
-        $borrows = Member::all();
+        $borrows = Borrow::all();
         return view('borrows.show', ['id' => $id]);
     }
     
