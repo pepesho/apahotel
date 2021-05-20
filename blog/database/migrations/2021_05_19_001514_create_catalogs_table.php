@@ -25,8 +25,6 @@ class CreateCatalogsTable extends Migration
             //外部キー設定
             $table->foreign('genre_id')->references('id')->on('genres')->onDelete('cascade');
 
-            //ユニーク設定
-            $table->unique('genre_id');
         });
     }
 

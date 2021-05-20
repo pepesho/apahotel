@@ -18,7 +18,7 @@ class CreateMembersTable extends Migration
             $table->string('name');
             $table->integer('postal');
             $table->string('address');
-            $table->integer('tel');
+            $table->string('tel');
             $table->string('email');
             $table->date('birthday');
             $table->timestamps('');
