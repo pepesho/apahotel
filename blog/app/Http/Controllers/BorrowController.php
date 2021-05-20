@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Borrow;
+use App\Member;
 use Illuminate\Http\Request;
 
 class BorrowController extends Controller
 {
+    // public function query(){
+    //     return view('borrows.query');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +19,9 @@ class BorrowController extends Controller
     public function index()
     {
         //
-    }
-
+        $borrows = Member::all();
+        return view('borrows.index',);
+    }    
     /**
      * Show the form for creating a new resource.
      *
@@ -46,8 +51,10 @@ class BorrowController extends Controller
      */
     public function show(Borrow $borrow)
     {
-        //
+        $borrows = Member::all();
+        return view('borrows.show', ['id' => $id]);
     }
+    
 
     /**
      * Show the form for editing the specified resource.

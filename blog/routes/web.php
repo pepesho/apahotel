@@ -23,4 +23,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('ledgers', 'LedgerController');
     Route::resource('catalogs', 'CatalogController');
     Route::resource('borrows', 'BorrowController');
+    // Route::get('borrows', 'BorrowController@query')->name('query');
 });
