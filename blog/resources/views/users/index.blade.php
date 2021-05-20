@@ -18,7 +18,7 @@
 
 @foreach ($users as $user)
 
-<p>{{ $user->id }} <a href="{{ route('users.show', $user->name )}}">{{ $user->name }}</a></p>
+<p>{{ $user->id }} <a href="{{ route('users.show', $user->id )}}">{{ $user->name }}</a></p>
     
 @endforeach
 @endsection
