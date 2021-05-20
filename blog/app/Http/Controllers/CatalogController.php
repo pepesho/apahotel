@@ -14,7 +14,8 @@ class CatalogController extends Controller
      */
     public function index()
     {
-        //
+        $books = Catalog::all();
+        return view('books.index',['books' => $books]);
     }
 
     /**
@@ -24,7 +25,7 @@ class CatalogController extends Controller
      */
     public function create()
     {
-        //
+        return view('books.create');
     }
 
     /**
@@ -35,7 +36,17 @@ class CatalogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $book = new Catalog;
+        $book->ISBN_id =  $request->ISBN_id;
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->genre_id = $request->genre_id;
+        $book->publisher = $request->publisher;
+        $book->publisher_date = $request->publisher_date;
+        $book->timestamps = false;
+        $book->save();
+        $books = Catalog::all();
+        return redirect(route('catalogs.index',['books' => $books]));
     }
 
     /**
@@ -44,9 +55,10 @@ class CatalogController extends Controller
      * @param  \App\Catalog  $catalog
      * @return \Illuminate\Http\Response
      */
-    public function show(Catalog $catalog)
+    public function show($id)
     {
-        //
+        $book = Catalog::find($id);
+        return view('books.show',['book' => $book]);
     }
 
     /**
@@ -55,9 +67,10 @@ class CatalogController extends Controller
      * @param  \App\Catalog  $catalog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Catalog $catalog)
+    public function edit($id)
     {
-        //
+        $book = Catalog::find($id);
+        return view('books.edit',['book' => $book]);
     }
 
     /**
@@ -67,9 +80,18 @@ class CatalogController extends Controller
      * @param  \App\Catalog  $catalog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Catalog $catalog)
+    public function update(Request $request, $id)
     {
-        //
+        $book = Catalog::find($id);
+        $book->ISBN_id =  $request->ISBN_id;
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->genre_id = $request->genre_id;
+        $book->publisher = $request->publisher;
+        $book->publisher_date = $request->publisher_date;
+        $book->timestamps = false;
+        $book->save();
+        return redirect(route('catalogs.show',$book->id));
     }
 
     /**
@@ -78,8 +100,10 @@ class CatalogController extends Controller
      * @param  \App\Catalog  $catalog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Catalog $catalog)
+    public function destroy($id)
     {
-        //
+        $book = Book::find($id);
+        $book->delete();
+        return redirect(route('catalogs.index'));
     }
 }

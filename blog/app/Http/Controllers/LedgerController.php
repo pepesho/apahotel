@@ -55,9 +55,10 @@ class LedgerController extends Controller
      * @param  \App\Ledger  $ledger
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ledger $ledger)
+    public function edit($id)
     {
-        //
+        $book = Catalog::find($id);
+        return view('books.add',['book' => $book]);
     }
 
     /**
@@ -67,9 +68,18 @@ class LedgerController extends Controller
      * @param  \App\Ledger  $ledger
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ledger $ledger)
+    public function update(Request $request, $id)
     {
-        //
+        $book = Catalog::find($id);
+        $book->ISBN_id =  $request->ISBN_id;
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->genre_id = $request->genre_id;
+        $book->publisher = $request->publisher;
+        $book->publisher_date = $request->publisher_date;
+        $book->timestamps = false;
+        $book->save();
+        return redirect(route('catalogs.show',$book->id));
     }
 
     /**
