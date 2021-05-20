@@ -11,4 +11,8 @@ class Member extends Model
     {
         return $this->hasMany(Borrow::class);
     }
+    public function ledgers()
+    {
+        return $this->belongsToMany(Ledger::class,'borrows');
+    }
 }
