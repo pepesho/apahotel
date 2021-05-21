@@ -20,7 +20,9 @@
 
 @foreach ($books as $book)
 <p>
-    {{ $book->ISBN_id }}&nbsp;<a href="{{ route('catalogs.show', $book->id )}}">{{ $book->title }}</a>&nbsp;{{$book->genre_id}}&nbsp;{{$book->author}}&nbsp;{{$book->publisher}}&nbsp;{{$book->publisher_date}}&nbsp;<a href="{{route('ledgers.edit',$book->id)}}">追加</a>
+    {{ $book->ISBN_id }}&nbsp;<a href="{{ route('catalogs.show', $book->id )}}">{{ $book->title }}</a>
+    &nbsp;{{$book->genre_id}}&nbsp;{{$book->author}}&nbsp;{{$book->publisher}}&nbsp;{{$book->publisher_date}}&nbsp;
+    <a href="{{route('ledgers.create',$book->ISBN_id)}}">追加</a>
 </p>  
 @endforeach
 

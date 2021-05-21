@@ -16,5 +16,5 @@
 <p>ジャンル： {{ $book->genre_id }} </p>
 <p>出版社： {{ $book->publisher }} </p>
 <p>出版日： {{ $book->publisher_date }} </p>
-<a href="..">一覧ページに戻る</a> 
+<a href="{{ route('catalogs.index') }}">一覧ページに戻る</a> 
 @endsection
