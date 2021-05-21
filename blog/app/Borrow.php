@@ -18,4 +18,8 @@ class Borrow extends Model
     {
         return $this->belongsTo(Ledger::class);
     }
+    public function borrow_catalogs()
+    {
+        return $this->belongsToMany(Catalog::class,'ledgers');
+    }
 }
