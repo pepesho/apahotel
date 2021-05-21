@@ -12,7 +12,7 @@ class LedgerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
         $ledgers = \App\Ledger::all();
         $catalogs = \App\Catalog::all();

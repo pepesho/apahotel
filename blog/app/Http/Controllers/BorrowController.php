@@ -17,10 +17,11 @@ class BorrowController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $borrows = Borrow::all();
+        $query = Borrow::select('*');
+        $query->where('member_id', $request->member_id);
+        $borrows = $query->get();
         return view('borrows.index',['borrows' => $borrows]);
     }    
     /**
@@ -45,6 +46,7 @@ class BorrowController extends Controller
         $borrow->book_id = $request->book_id;
         $borrow->member_id = $request->member_id;
         $borrow->borrow_date = \Carbon\Carbon::now();
+        $borrow->return_date = \Carbon\Carbon::now()->addDays(5);
         $borrow->save();
         return redirect(route('borrows.index'));
     }
