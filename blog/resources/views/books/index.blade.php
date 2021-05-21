@@ -8,14 +8,35 @@
     @csrf
     @method('get')
 
-    <select name="sort">
-        <option value="" selected></option>
-        <option value="id_asc">ID昇順</option> 
-        <option value="id_desc">ID降順</option>
-        <option value="name_asc">名前昇順</option> 
-        <option value="name_desc">名前降順</option>  
+<dl>
+<dt>ID検索</dt>
+<dd>
+    <input type="search" name="id" value="" placeholder="IDで検索">
+    <input type="submit" value="検索">  
+</dd>
+<dt>タイトル検索</dt>
+<dd>
+    <input type="search" name="title" value="" placeholder="タイトルで検索">
+    <input type="submit" value="検索">
+</dd>
+<dt>著者名検索</dt>
+<dd>
+    <input type="search" name="author" value="" placeholder="著者名で検索">
+    <input type="submit" value="検索">
+</dd>
+<dt>ジャンル検索</dt>
+<dd>
+    <select name="genre_id">
+        <option value=""></option>
+        @foreach($genres as $genre)
+        <option value="{{$genre->id}}"{{request('genre_id')==$genre->id?'selected':''}}>
+             {{$genre->id}} {{$genre->genre}}
+        </option>
+        @endforeach
     </select>
-    <button type="submit">検索</button>    
+    <input type="submit" value="検索">
+</dd>
+
 </form>
 
 @foreach ($books as $book)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Ledger;
+use App\Catalog;
 use Illuminate\Http\Request;
 
 class LedgerController extends Controller
@@ -12,9 +13,10 @@ class LedgerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        $ledgers = \App\Ledger::all();
+        $query = Ledger::with('catalog');
+        $ledgers = $query->select('*')->get();
         $catalogs = \App\Catalog::all();
         return view('ledgers.index', ['ledgers' => $ledgers, 'catalogs' => $catalogs]);
     }

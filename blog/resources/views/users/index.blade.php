@@ -6,14 +6,8 @@
     @csrf
     @method('get')
 
-    <select name="sort">
-        <option value="" selected></option>
-        <option value="id_asc">ID昇順</option> 
-        <option value="id_desc">ID降順</option>
-        <option value="name_asc">名前昇順</option> 
-        <option value="name_desc">名前降順</option>  
-    </select>
-    <button type="submit">検索</button>    
+    <input type="search" name="id" value="" placeholder="IDで検索">
+    <input type="submit" value="検索">  
 </form>
 
 @foreach ($users as $user)

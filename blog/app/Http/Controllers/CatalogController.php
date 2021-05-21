@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Catalog;
+use App\Genre;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller
@@ -12,10 +13,24 @@ class CatalogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $books = Catalog::all();
-        return view('books.index',['books' => $books]);
+        $query = Catalog::with('genre');
+        if ($request->id) {
+            $query->where('id', $request->id);
+        } else  {$query -> select('*');}
+        if ($request->title) {
+            $query->where('title', 'LIKE', "%$request->title%");
+        } else  {$query -> select('*');}
+        if ($request->author) {
+            $query->where('author', 'LIKE', "%$request->author%");
+        } else  {$query -> select('*');}
+        if ($request->genre_id) {
+            $query->where('genre_id', "$request->genre_id");
+        } else  {$query -> select('*');}
+        $books = $query->get();
+        $genres = Genre::withCount('catalogs')->get();
+        return view('books.index',['books' => $books, 'genres'=>$genres]);
     }
 
     /**

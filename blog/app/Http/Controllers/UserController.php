@@ -17,7 +17,12 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::all();
+        $query = User::select('*');
+        if ($request->id) {
+            $query->where('id', $request->id);
+        } else  {$query -> select('*');}
+
+        $users = $query->get();
 
         return view('users.index',['users' => $users]);
     }
