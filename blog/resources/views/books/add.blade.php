@@ -23,5 +23,5 @@
 
  <button type="submit">変更する</button>
 </form>
-<a href="/">一覧ページに戻る</a>
+<a href="{{ route('catalogs.index') }}">一覧ページに戻る</a>
 @endsection

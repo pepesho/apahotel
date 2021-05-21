@@ -21,4 +21,5 @@
     </dl>
     <button type="submit">登録する</button>
 </form>
+<a href="{{ route('catalogs.index') }}">一覧ページに戻る</a>
 @endsection

@@ -21,4 +21,5 @@
 <p>{{ $user->id }} <a href="{{ route('users.show', $user->id )}}">{{ $user->name }}</a></p>
     
 @endforeach
+<a href="/">ホーム画面に移動</a>
 @endsection

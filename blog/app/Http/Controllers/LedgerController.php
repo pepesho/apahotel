@@ -14,7 +14,9 @@ class LedgerController extends Controller
      */
     public function index()
     {
-        //
+        $ledgers = \App\Ledger::all();
+        $catalogs = \App\Catalog::all();
+        return view('ledgers.index', ['ledgers' => $ledgers, 'catalogs' => $catalogs]);
     }
 
     /**
@@ -22,9 +24,9 @@ class LedgerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('ledgers.create');
     }
 
     /**
@@ -35,7 +37,11 @@ class LedgerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ledger = new \App\Ledger;
+        $ledger->catalog_id = $request->catalog_id;
+        $ledger->arrival_day = $request->arrival_day;
+        $ledger->save();
+        return redirect(route('ledgers.index'));
     }
 
     /**
@@ -44,9 +50,10 @@ class LedgerController extends Controller
      * @param  \App\Ledger  $ledger
      * @return \Illuminate\Http\Response
      */
-    public function show(Ledger $ledger)
+    public function show($id)
     {
-        //
+        $ledger = \App\Ledger::find($id);
+        return view('ledgers.show', ['ledger' => $ledger]);
     }
 
     /**
@@ -57,8 +64,8 @@ class LedgerController extends Controller
      */
     public function edit($id)
     {
-        $book = Catalog::find($id);
-        return view('books.add',['book' => $book]);
+        $ledger = \App\Ledger::find($id);
+        return view('ledgers.edit', ['ledger' => $ledger]);
     }
 
     /**
@@ -70,16 +77,11 @@ class LedgerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $book = Catalog::find($id);
-        $book->ISBN_id =  $request->ISBN_id;
-        $book->title = $request->title;
-        $book->author = $request->author;
-        $book->genre_id = $request->genre_id;
-        $book->publisher = $request->publisher;
-        $book->publisher_date = $request->publisher_date;
-        $book->timestamps = false;
-        $book->save();
-        return redirect(route('catalogs.show',$book->id));
+        $ledger = \App\Ledger::find($id);
+        $ledger->catalog_id = $request->catalog_id;
+        $ledger->arrival_day = $request->arrival_day;
+        $ledger->save();
+        return redirect(route('ledgers.show',$ledger->id));
     }
 
     /**
@@ -88,8 +90,10 @@ class LedgerController extends Controller
      * @param  \App\Ledger  $ledger
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ledger $ledger)
+    public function destroy($id)
     {
-        //
+        $ledger = \App\Ledger::find($id);
+        $ledger->delete();
+        return redirect(route('ledgers.index'));
     }
 }

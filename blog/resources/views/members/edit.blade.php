@@ -19,7 +19,7 @@
 <dt> メールアドレス</dt>
 <dd><input type="text" name="email" value="{{ $member->email }}"></dd>
 <dt>生年月日</dt>
-<dd><input type="date" name="birthday" value="{{$member->birthday}}"></dd> -->
+<dd><input type="date" name="birthday" value="{{$member->birthday}}"></dd>
 </dl>
 
  <button type="submit">変更する</button>
