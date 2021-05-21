@@ -1,8 +1,8 @@
 @if (Auth::check())
-<a class="brand" href="/"><i class="fas fa-book"></i></a>
-<a href="" onclick="logout()">
-    <i class="fas fa-sign-out-alt"></i>
-</a>
+<div class="navigation_wrapper">
+    <a class="nav_top" href="/"><i class="fas fa-book"></i></a>
+    <a class="nav_logout" href="" onclick="logout()"><i class="fas fa-sign-out-alt"></i></a>
+</div>
 <form id="logout-form" action="{{ route('logout') }}" method="post">
     @csrf
 </form>
