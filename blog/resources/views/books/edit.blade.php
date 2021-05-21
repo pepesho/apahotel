@@ -3,6 +3,7 @@
 @section('content')
 
 <h1>書籍情報の変更</h1>
+@include('commons.flash')
 <form action="{{ route('catalogs.update', $book->id) }}" method="POST">
 @csrf
 @method('put')
