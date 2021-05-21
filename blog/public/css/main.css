@@ -1,3 +1,29 @@
 /* *  {
     box-sizing: border-box;
 } */
+
+body {
+    margin: 0;
+  }
+  
+  .navigation_wrapper {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 2px #1E62D0;
+  }
+  
+  /* トップに戻るaタグ */
+  .nav_top {
+    margin-left: 10px;
+  }
+  /* ログアウトするaタグ */
+  .nav_logout {
+    margin-right: 10px;
+  }
+  /* アイコン自体 */
+  .fas {
+    font-size: 50px;
+    color: #1E62D0;
+  }
