@@ -14,8 +14,11 @@ class MemberController extends Controller
      */
     public function index(Request $request)
     {
-        $members = Member::all();
-
+        $query = Member::select('*');
+        if ($request->id) {
+            $query->where('id', $request->id);
+        } else  {$query -> select('*');}
+        $members = $query->get();
         return view('members.index', ['members'=>$members]);
     }
 
@@ -38,6 +41,14 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'postal' => 'required|max:11',
+            'address' => 'required|max:255',
+            'tel' => 'required|max:255',
+            'email' => 'required|max:255',
+            'birthday' => 'required|date'
+        ]);
         $member = new Member;
         $member->name=$request->name;
         $member->postal=$request->postal;
@@ -80,6 +91,14 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'postal' => 'required|max:11',
+            'address' => 'required|max:255',
+            'tel' => 'required|max:255',
+            'email' => 'required|max:255',
+            'birthday' => 'required|date'
+        ]);
         $member->update($request->all());
         return redirect(route('members.show', $member));
     }

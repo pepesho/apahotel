@@ -8,9 +8,8 @@
     @csrf
     @method('get')
 
-    タイトル<input type="search">
-    
-    <button type="submit">検索</button>    
+    <input type="search" name="id" value="" placeholder="IDで検索">
+    <input type="submit" value="検索">  
 </form>
 
 @foreach ($members as $member)

@@ -36,6 +36,13 @@ class CatalogController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'ISBN_id'=>'required',
+            'title'=>'required',
+            'genre_id'=>'required',
+            'publisher'=>'required',
+            'publisher_date'=>'required',
+        ]);
         $book = new Catalog;
         $book->ISBN_id =  $request->ISBN_id;
         $book->title = $request->title;
@@ -82,6 +89,13 @@ class CatalogController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'ISBN_id'=>'required',
+            'title'=>'required',
+            'genre_id'=>'required',
+            'publisher'=>'required',
+            'publisher_date'=>'required',
+        ]);
         $book = Catalog::find($id);
         $book->ISBN_id =  $request->ISBN_id;
         $book->title = $request->title;

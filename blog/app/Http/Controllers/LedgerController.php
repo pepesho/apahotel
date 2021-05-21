@@ -37,6 +37,10 @@ class LedgerController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'catalog_id'=>'required',
+            'arrival_day'=>'required',
+        ]);
         $ledger = new \App\Ledger;
         $ledger->catalog_id = $request->catalog_id;
         $ledger->arrival_day = $request->arrival_day;

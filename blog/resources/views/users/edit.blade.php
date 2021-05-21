@@ -3,6 +3,7 @@
 @section('content')
 
 <h1>職員情報の変更</h1>
+@include('commons.flash')
 <form action="{{ route('users.update', $user->id) }}" method="POST">
 @csrf
 @method('put')
