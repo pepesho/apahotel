@@ -16,7 +16,7 @@
             {{-- 貸出 --}}
         <form action="{{ route('borrows.store') }}" method="post">
             @csrf
-            <p>本のID<input type="text" name="book_id"></p>
+            <p>本のID<input type="text" name="ledger_id"></p>
             <p>会員ID<input type="text" name="member_id" value=""></p>
             <button type="submit">貸出</button>
         </form>
@@ -35,7 +35,7 @@
                 @csrf
                 @method('delete')
                 <tr>
-                    <td>{{ $borrow->book->catalog->title }}</td>
+                    <td>{{ $borrow->ledger->catalog->title }}</td>
                     <td>{{ $borrow->member->name }}</td>
                     <td>{{ $borrow->borrow_date }}</td>
                     <td>{{ $borrow->return_date }}</td>

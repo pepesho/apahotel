@@ -12,7 +12,7 @@ class Borrow extends Model
     {
         return $this->belongsTo(Member::class);
     }
-    public function book()
+    public function ledger()
     {
         return $this->belongsTo(Ledger::class);
     }

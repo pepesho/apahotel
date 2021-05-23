@@ -15,16 +15,16 @@ class CreateBorrowsTable extends Migration
     {
         Schema::create('borrows', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('book_id')->unsigned()->index();
+            $table->bigInteger('ledger_id')->unsigned()->index();
             $table->bigInteger('member_id')->unsigned()->index();
             $table->date('borrow_date');
 
             //外部キー設定
-            $table->foreign('book_id')->references('id')->on('ledgers')->onDelete('cascade');
+            $table->foreign('ledger_id')->references('id')->on('ledgers')->onDelete('cascade');
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
 
             //ユニーク設定
-            $table->unique(['book_id', 'member_id']);
+            $table->unique(['ledger_id', 'member_id']);
 
         });
     }

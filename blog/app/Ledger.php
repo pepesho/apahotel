@@ -14,7 +14,7 @@ class Ledger extends Model
     }
     public function borrows()
     {
-        return $this->hasMany(Borrow::class);
+        return $this->hasOne(Borrow::class);
     }
     // public function borrow_ledgers()
     // {

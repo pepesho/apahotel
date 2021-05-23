@@ -21,11 +21,12 @@ class BorrowController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Borrow::with('book.catalog')->with('member');
+        $query = Borrow::with(['ledger.catalog','member']);
         if ($request->member_id) {
             $query->where('member_id', $request->member_id);
         } else  {$query -> select('*');}
         $borrows = $query->get();
+        // dd($borrows);
         return view('borrows.index',['borrows' => $borrows]);
     }    
     /**
@@ -47,11 +48,11 @@ class BorrowController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'book_id'=>'required',
+            'ledger_id'=>'required',
             'member_id'=>'required',
         ]);
         $borrow = new Borrow;
-        $borrow->book_id = $request->book_id;
+        $borrow->ledger_id = $request->ledger_id;
         $borrow->member_id = $request->member_id;
         $borrow->borrow_date = \Carbon\Carbon::now();
         $borrow->return_date = \Carbon\Carbon::now()->addDays(15);
