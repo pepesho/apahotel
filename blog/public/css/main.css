@@ -1,29 +1,123 @@
-/* *  {
-    box-sizing: border-box;
-} */
+header {
+    padding: 20px 10px;
+    background-color: lightcoral;
+}
 
 body {
     margin: 0;
-  }
-  
-  .navigation_wrapper {
+    text-align: center;
+}
+
+main {
+    margin-top: 30px;
+}
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.navigation_wrapper {
     height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: solid 2px #1E62D0;
-  }
-  
-  /* トップに戻るaタグ */
-  .nav_top {
+}
+
+/* トップに戻るaタグ */
+.nav_top {
     margin-left: 10px;
-  }
-  /* ログアウトするaタグ */
-  .nav_logout {
+}
+/* ログアウトするaタグ */
+.nav_logout {
     margin-right: 10px;
-  }
-  /* アイコン自体 */
-  .fas {
+}
+/* アイコン自体 */
+.fas {
     font-size: 50px;
-    color: #1E62D0;
-  }
+    color: #1e62d0;
+}
+.nav_text {
+    font-size: 35px;
+    color: black;
+    font-weight: bolder;
+    font-family: sans-serif;
+}
+/*フォーム全体*/
+#form1 {
+    /* position:relative;フォームの相対位置	 */
+    max-width: 960px; /*フォームのサイズ*/
+    margin-bottom: 15px; /*フォームの下に余白*/
+}
+/*検索ボックス*/
+#sbox {
+    /* position:relative;フォームの位置	 */
+    outline: 0; /*クリック時の青い枠線消す*/
+    height: 30px; /*検索ボックスの高さ*/
+    padding: 5px; /*テキスト位置調整*/
+    border-radius: 2px 0 0 2px; /*検索ボックスの角を丸める*/
+    background: #eee; /*検索ボックスの背景カラー*/
+}
+/*検索ボタン*/
+#sbtn {
+    width: 50px; /*検索ボタンの横幅*/
+    height: 30px; /*検索ボタンの縦幅*/
+    /* position:relative;/*検索ボタンの位置*/
+    left: auto; /*検索ボタンの位置調整*/
+    top: 0;
+    border-radius: 0 2px 2px 0; /*検索ボタンの角を丸める*/
+    background: #7fbfff; /*検索ボタンの背景カラー*/
+    border: none; /*検索ボタンの枠線を消す*/
+    color: #fff; /*検索ボタンのテキストカラー*/
+    font-weight: bold; /*検索ボタンのテキスト太字*/
+    font-size: 16px; /*検索ボタンのフォントサイズ*/
+}
+/*検索ボタンマウスオーバー時*/
+#sbtn:hover {
+    color: #666; /*検索ボタンマウスオーバー時のフォントカラー*/
+}
+.button {
+    height: 130px;
+}
+/* テーブルの色違い設定 */
+#table1 {
+    background-color: paleturquoise;
+    color: saddlebrown;
+}
+/* テーブルの設定 */
+table {
+    text-align: center;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+/* テーブルの要素の設定 */
+th,
+td {
+    border: solid 1px;
+    padding: 10px;
+}
+/* Pタグの設定 */
+.new_button {
+    background-color: skyblue;
+    width: 100px;
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-left: 45%;
+    text-align: center;
+    border-radius: 20px;
+}
+/* Aタグの文字の設定 */
+.text {
+    color: snow;
+}
+/* 検索フォームの位置 */
+.serch_form {
+    padding: 0 15%;
+}
+/* ページリンクの設定 */
+nav ul{
+    margin-top: 10px;
+    margin-bottom: 40px;
+    text-align: center; 
+    justify-content: center;
+}

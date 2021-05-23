@@ -7,15 +7,14 @@
     @csrf
     <p>
         <label>メールアドレス</label><br>
-        <input type="email" name="email"
-						value="{{ old('email') }}">
+        <input type="email" name="email" value="{{ old('email') }}">
     </p>
     <p>
-        <label>パスワード</label><br>
+        <label class="visually-hidden">パスワード</label><br>
         <input type="password" name="password" value="">
     </p>
     <p>
-        <button type="submit">ログイン</button>
+        <button type="submit" class="btn btn-primary">ログイン</button>
     </p>
     <p>または</p>
     <p>

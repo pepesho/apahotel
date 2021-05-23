@@ -60,5 +60,55 @@ class MembersTableSeeder extends Seeder
             'tel' => '00000000000',
         ]);
         $user->save();
+
+        $user = new \App\Member([
+            'name' => '松本人志',
+            'postal' => '0011111',
+            'email' => 'mattyan.php2021@gmail.com', 
+            'birthday' => '1700-01-01',
+            'address' => '兵庫県',
+            'tel' => '00000000000',
+        ]);
+        $user->save();
+
+        $user = new \App\Member([
+            'name' => '石川せいや',
+            'postal' => '0011111',
+            'email' => 'seiya.php2021@gmail.com', 
+            'birthday' => '1700-01-01',
+            'address' => '東京都',
+            'tel' => '00000000000',
+        ]);
+        $user->save();
+
+        $user = new \App\Member([
+            'name' => '柳田',
+            'postal' => '0011111',
+            'email' => 'gi-ta.php2021@gmail.com', 
+            'birthday' => '1700-01-01',
+            'address' => '埼玉県',
+            'tel' => '00000000000',
+        ]);
+        $user->save();
+
+        $user = new \App\Member([
+            'name' => '蜷川実花',
+            'postal' => '0011111',
+            'email' => 'mika.php2021@gmail.com', 
+            'birthday' => '1700-01-01',
+            'address' => '埼玉県',
+            'tel' => '00000000000',
+        ]);
+        $user->save();
+
+        $user = new \App\Member([
+            'name' => '若林正恭',
+            'postal' => '0011111',
+            'email' => 'waka.php2021@gmail.com', 
+            'birthday' => '1700-01-01',
+            'address' => '埼玉県',
+            'tel' => '00000000000',
+        ]);
+        $user->save();
     }
 }

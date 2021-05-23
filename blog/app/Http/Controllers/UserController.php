@@ -18,12 +18,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $query = User::select('*');
-        if ($request->id) {
-            $query->where('id', $request->id);
-        } else  {$query -> select('*');}
-
         $users = $query->get();
-
         return view('users.index',['users' => $users]);
     }
 
@@ -58,7 +53,6 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
-        $user = \Auth::user();
         return view('users.show',['user' => $user]);
     }
 
@@ -72,7 +66,6 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
-        $user = \Auth::user();
         return view('users.edit',['user' => $user]);
     }
 
@@ -85,6 +78,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name'=>'required',
+            'email'=>'required',
+        ]);
         $user = User::find($id);
         $user->name =  $request->name;
         $user->email = $request->email;

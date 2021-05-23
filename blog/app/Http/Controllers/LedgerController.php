@@ -15,10 +15,8 @@ class LedgerController extends Controller
      */
     public function index()
     {
-        $query = Ledger::with('catalog');
-        $ledgers = $query->select('*')->get();
-        $catalogs = \App\Catalog::all();
-        return view('ledgers.index', ['ledgers' => $ledgers, 'catalogs' => $catalogs]);
+        $ledgers = Ledger::with('catalog')->orderBy('id')->paginate(15);
+       return view('ledgers.index', ['ledgers' => $ledgers]);
     }
 
     /**
@@ -41,11 +39,10 @@ class LedgerController extends Controller
     {
         $this->validate($request, [
             'catalog_id'=>'required',
-            'arrival_day'=>'required',
         ]);
         $ledger = new \App\Ledger;
         $ledger->catalog_id = $request->catalog_id;
-        $ledger->arrival_day = $request->arrival_day;
+        $ledger->arrival_day = \Carbon\Carbon::now();
         $ledger->save();
         return redirect(route('ledgers.index'));
     }
@@ -83,6 +80,9 @@ class LedgerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'catalog_id'=>'required',
+        ]);
         $ledger = \App\Ledger::find($id);
         $ledger->catalog_id = $request->catalog_id;
         $ledger->arrival_day = $request->arrival_day;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Member;
+use App\Ledger;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
@@ -14,11 +15,14 @@ class MemberController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Member::select('*');
+        $query = Member::with('borrows');
         if ($request->id) {
             $query->where('id', $request->id);
         } else  {$query -> select('*');}
-        $members = $query->get();
+        if ($request->email) {
+            $query->where('email', 'LIKE', "%$request->email%");
+        } else  {$query -> select('*');}
+        $members = $query->orderBy('id')->paginate(15);
         return view('members.index', ['members'=>$members]);
     }
 

@@ -7,19 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Borrow extends Model
 {
     protected $fillable = ['book_id','member_id','borrow_date'];
-    public $timestamps = false;
-
-    
+    public $timestamps = false;    
     public function member()
     {
         return $this->belongsTo(Member::class);
     }
-    public function ledgers()
+    public function book()
     {
         return $this->belongsTo(Ledger::class);
-    }
-    public function borrow_catalogs()
-    {
-        return $this->belongsToMany(Catalog::class,'ledgers');
     }
 }
