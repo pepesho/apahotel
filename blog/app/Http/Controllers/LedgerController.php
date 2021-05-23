@@ -15,8 +15,9 @@ class LedgerController extends Controller
      */
     public function index()
     {
-        $ledgers = Ledger::with('catalog')->orderBy('id')->paginate(15);
-       return view('ledgers.index', ['ledgers' => $ledgers]);
+        $ledgers = Ledger::with(['catalog','borrows'])->orderBy('id')->paginate(15);
+        // dd($ledgers);
+        return view('ledgers.index', ['ledgers' => $ledgers]);
     }
 
     /**

@@ -31,6 +31,7 @@ main {
 /* ログアウトするaタグ */
 .nav_logout {
     margin-right: 10px;
+    margin: 0 0 0 auto;
 }
 /* アイコン自体 */
 .fas {
@@ -38,6 +39,9 @@ main {
     color: #1e62d0;
 }
 .nav_text {
+    margin: 0;
+    /* height: auto; */
+    text-align: left;
     font-size: 35px;
     color: black;
     font-weight: bolder;
