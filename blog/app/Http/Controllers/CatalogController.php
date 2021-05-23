@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Catalog;
 use App\Genre;
+use App\Ledger;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller
@@ -15,9 +16,9 @@ class CatalogController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Catalog::with('genre');
-        if ($request->id) {
-            $query->where('id', $request->id);
+        $query = Catalog::with('genre')->with('ledgers');
+        if ($request->ISBN_id) {
+            $query->where('ISBN_id', $request->ISBN_id);
         } else  {$query -> select('*');}
         if ($request->title) {
             $query->where('title', 'LIKE', "%$request->title%");
@@ -28,8 +29,10 @@ class CatalogController extends Controller
         if ($request->genre_id) {
             $query->where('genre_id', "$request->genre_id");
         } else  {$query -> select('*');}
-        $books = $query->get();
+        $books = $query->orderBy('id')->paginate(20);
         $genres = Genre::withCount('catalogs')->get();
+        // $ledgers = Ledger::withCount('catalog')->get();
+        // dd($books);
         return view('books.index',['books' => $books, 'genres'=>$genres]);
     }
 
@@ -54,6 +57,7 @@ class CatalogController extends Controller
         $this->validate($request, [
             'ISBN_id'=>'required',
             'title'=>'required',
+            'author' => 'required',
             'genre_id'=>'required',
             'publisher'=>'required',
             'publisher_date'=>'required',
@@ -107,6 +111,7 @@ class CatalogController extends Controller
         $this->validate($request, [
             'ISBN_id'=>'required',
             'title'=>'required',
+            'author' => 'required',
             'genre_id'=>'required',
             'publisher'=>'required',
             'publisher_date'=>'required',

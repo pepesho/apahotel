@@ -1,6 +1,9 @@
 .menu_wrapper {
-   width: 800px;
-   /* background-color: #aaa; */
+   /* width:800px;
+   height: 800px;; */
+   background-color:white;
+   text-align:center;
+
 }
 
 .menu_button {
@@ -9,18 +12,18 @@
     background-image: -moz-linear-gradient(top, #3D94F6, #1E62D0);
     background-image: -ms-linear-gradient(top, #3D94F6, #1E62D0);
     background-image: -o-linear-gradient(top, #3D94F6, #1E62D0);
-    background-image: -webkit-gradient(to bottom, #3D94F6, #1E62D0);
+    background-image: -webkit-gradient(top bottom, #3D94F6, #1E62D0);
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
     width: 300px;
-    height: 50px;
-    line-height: 50px;
+    height: 100px;
+    /* line-height: 50px; */
     color: #FFFFFF;
     font-family: Arial;
     font-size: 40px;
     font-weight: 100;
-    padding: 40px;
+    padding: 10px;
     -webkit-box-shadow: 1px 1px 20px 0 #000000;
     -moz-box-shadow: 1px 1px 20px 0 #000000;
     box-shadow: 1px 1px 20px 0 #000000;
@@ -30,7 +33,8 @@
     display: inline-block;
     cursor: pointer;
     text-align: center;
-    
+    margin-bottom: 50px;
+    margin-left: 15px;
  }
  
  .menu_button:hover {

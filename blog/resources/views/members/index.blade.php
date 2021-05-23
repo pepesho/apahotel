@@ -2,19 +2,30 @@
 
 @section('content')
 
-<p><a href="{{ route('members.create')}}">新規登録</a></p>
+<p class="new_button"><a href="{{ route('members.create')}}" class="text">新規登録</a></p>
 
 <form action="{{ route('members.index')}}" method="post">
     @csrf
     @method('get')
-
-    <input type="search" name="id" value="" placeholder="IDで検索">
-    <input type="submit" value="検索">  
+    <input type="search" name="id" value="" placeholder="IDで検索" id="sbox">
+    <input type="search" name="email" value="" placeholder="メールアドレスで検索" id="sbox">
+    <input type="submit" value="検索" id="sbtn">
 </form>
-
+<table>
+    <tr>
+        <th id="table1">会員ID</th>
+        <th id="table1">名前</th>
+        <th id="table1">メールアドレス</th>
+    </tr>
 @foreach ($members as $member)
 
-<p>{{ $member->id }} <a href="{{ route('members.show', $member->id )}}">{{ $member->name }}</a>貸出状況</p>
+    <tr>
+        <td id="table1">{{ $member->id }}</td>
+        <td><a href="{{ route('members.show', $member->id )}}">{{ $member->name }}</td>
+        <td>{{ $member->email }}</td>
+    </tr>
     
 @endforeach
+</table>
+{{ $members->appends(Request::all())->links() }}
 @endsection

@@ -3,13 +3,12 @@
 @section('content')
 
 <h1>書籍在庫の追加</h1>
+@include('commons/flash')
 <form action="{{ route('ledgers.store') }}" method="POST">
 @csrf
 <dl>
-    <dt>カタログID</dt>
+    <dt>書籍番号</dt>
     <dd><input type="text" name="catalog_id"></dd>
-    <dt>到着日</dt>
-    <dd><input type="date" name="arrival_day"></dd>
 </dl>
 <button type="submit">登録する</button>
 </form>

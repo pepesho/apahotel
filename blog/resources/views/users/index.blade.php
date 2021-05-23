@@ -2,18 +2,19 @@
 
 @section('content')
 
-<form action="{{ route('users.index')}}" method="post">
-    @csrf
-    @method('get')
-
-    <input type="search" name="id" value="" placeholder="IDで検索">
-    <input type="submit" value="検索">  
-</form>
-
+<table>
+    <tr>
+        <th id="table1">職員番号</th>
+        <th id="table1">名前</th>
+        <th id="table1">メールアドレス</th></tr>
 @foreach ($users as $user)
 
-<p>{{ $user->id }} <a href="{{ route('users.show', $user->id )}}">{{ $user->name }}</a></p>
-    
+    <tr>
+        <td id="table1">{{ $user->id }}</td>
+        <td><a href="{{ route('users.show', $user->id )}}">{{ $user->name }}</a></td>
+        <td>{{ $user->email }}</td>
+    </tr>
 @endforeach
-<a href="/">ホーム画面に移動</a>
+</table>
+    <a href="/">ホーム画面に移動</a>
 @endsection

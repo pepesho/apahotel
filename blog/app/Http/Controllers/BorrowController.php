@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Borrow;
 use App\Member;
+use App\Ledger;
+use App\Catalog;
 use Illuminate\Http\Request;
 use Request as PostRequest;
 
@@ -19,8 +21,10 @@ class BorrowController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Borrow::select('*');
-        $query->where('member_id', $request->member_id);
+        $query = Borrow::with('book.catalog')->with('member');
+        if ($request->member_id) {
+            $query->where('member_id', $request->member_id);
+        } else  {$query -> select('*');}
         $borrows = $query->get();
         return view('borrows.index',['borrows' => $borrows]);
     }    
@@ -42,11 +46,15 @@ class BorrowController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'book_id'=>'required',
+            'member_id'=>'required',
+        ]);
         $borrow = new Borrow;
         $borrow->book_id = $request->book_id;
         $borrow->member_id = $request->member_id;
         $borrow->borrow_date = \Carbon\Carbon::now();
-        $borrow->return_date = \Carbon\Carbon::now()->addDays(5);
+        $borrow->return_date = \Carbon\Carbon::now()->addDays(15);
         $borrow->save();
         return redirect(route('borrows.index'));
     }
@@ -101,8 +109,8 @@ class BorrowController extends Controller
          
         $checked = PostRequest::input('checked',[]);
         foreach ($checked as $id) {
-        Borrow::where("id",$id)->delete(); //Assuming you have a Todo model. 
-   }
+            Borrow::where("id",$id)->delete(); //Assuming you have a Todo model. 
+        }
         return redirect(route('borrows.index'));
     }
 }

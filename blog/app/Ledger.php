@@ -12,4 +12,12 @@ class Ledger extends Model
     {
         return $this->belongsTo(Catalog::class);
     }
+    public function borrows()
+    {
+        return $this->hasMany(Borrow::class);
+    }
+    // public function borrow_ledgers()
+    // {
+    //     return $this->belongsToMany(Member::class,'borrows');
+    // }
 }

@@ -9,8 +9,16 @@
 <button type="submit">削除する</button>
 </form>
 <h1>職員詳細</h1>
-<p>ID： {{ $user->id }} </p>
-<p>名前： {{ $user->name }} </p>
-<p>メールアドレス： {{ $user->email }} </p>
-<a href="..">一覧ページに戻る</a> 
+<table>
+    <tr>
+        <th id="table1">職員番号</th>
+        <th id="table1">名前</th>
+        <th id="table1">メールアドレス</th></tr>
+    <tr>
+        <td id="table1">{{ $user->id }}</td>
+        <td>{{ $user->name }}</a></td>
+        <td>{{ $user->email }}</td>
+    </tr>
+</table>
+<p class="new_button"><a href="{{ route('users.index') }}" class="text">一覧ページに戻る</a></p>
 @endsection
