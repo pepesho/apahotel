@@ -29,7 +29,14 @@ class CatalogController extends Controller
         if ($request->genre_id) {
             $query->where('genre_id', "$request->genre_id");
         } else  {$query -> select('*');}
-        $books = $query->orderBy('id')->paginate(20);
+        //$books = $query->orderBy('id')->paginate(20);
+        if($request->sort=='asc'){
+            $books = $query->orderBy('id')->paginate(20);
+        } elseif($request->sort=='desc') {
+            $books = $query->orderBy('id', 'desc')->paginate(20);
+        } else {
+            $books = $query->orderBy('id')->paginate(20);
+        }
         $genres = Genre::withCount('catalogs')->get();
         // $ledgers = Ledger::withCount('catalog')->get();
         // dd($books);

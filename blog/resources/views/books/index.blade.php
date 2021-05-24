@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<h1>登録書籍</h1>
 <div class="main_form">
     <p class="new_button"><a href="{{route('catalogs.create')}}" class="text">新規登録</a></p>
 
@@ -23,6 +24,11 @@
         </select>
         <input type="search" name="author" value="" placeholder="著者名で検索" id="sbox">
         <input type="submit" value="検索" id="sbtn">
+        <br>
+        <select name="sort">
+        <option value="asc">昇順（カタログID）</option>
+        <option value="desc">降順（カタログID）</option>
+        </select>
         </form>
     </div>
     <table>
