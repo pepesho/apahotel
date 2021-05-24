@@ -28,10 +28,15 @@ class LedgerController extends Controller
         }
             // $query = Catalog::where('title', 'LIKE', '%'.$request->title.'%')->get();//->with(['catalog', 'borrows'])->get();
             //ddd($query);
+        if($request->sort=='asc'){
             $ledgers = $query->orderBy('id')->paginate(15);
+        } elseif($request->sort=='desc') {
+            $ledgers = $query->orderBy('id', 'desc')->paginate(15);
+        } else {
+            $ledgers = $query->orderBy('id')->paginate(15);
+        }
         // dd($ledgers);
-        return view('ledgers.index', ['ledgers' => $ledgers]);
-        
+        return view('ledgers.index', ['ledgers' => $ledgers]);  
     }
 
     /**
@@ -70,7 +75,7 @@ class LedgerController extends Controller
      */
     public function show($id)
     {
-        $ledger = \App\Ledger::find($id);
+        $ledger = Ledger::with('catalog')->find($id);
         return view('ledgers.show', ['ledger' => $ledger]);
     }
 

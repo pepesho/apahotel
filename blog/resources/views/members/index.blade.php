@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<h1>会員一覧</h1>
 <p class="new_button"><a href="{{ route('members.create')}}" class="text">新規登録</a></p>
 
 <form action="{{ route('members.index')}}" method="post">
@@ -10,6 +10,11 @@
     <input type="search" name="id" value="" placeholder="IDで検索" id="sbox">
     <input type="search" name="email" value="" placeholder="メールアドレスで検索" id="sbox">
     <input type="submit" value="検索" id="sbtn">
+    <br>
+    <select name="sort">
+        <option value="asc">昇順（カタログID）</option>
+        <option value="desc">降順（カタログID）</option>
+    </select>
 </form>
 <table>
     <tr>

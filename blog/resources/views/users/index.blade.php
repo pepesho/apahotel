@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<h1>職員一覧</h1>
 <table>
     <tr>
         <th id="table1">職員番号</th>

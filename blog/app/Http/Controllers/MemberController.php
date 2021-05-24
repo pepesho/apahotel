@@ -20,9 +20,16 @@ class MemberController extends Controller
             $query->where('id', $request->id);
         }
         if ($request->email) {
-            $query->where('email', 'LIKE', "%$request->email%");
+            $query->where('email', 'LIKE', '%'.$request->email.'%');
         }
-        $members = $query->orderBy('id')->paginate(15);
+        if($request->sort=='asc'){
+            $members = $query->orderBy('id')->paginate(15);
+        } elseif($request->sort=='desc') {
+            $members = $query->orderBy('id', 'desc')->paginate(15);
+        } else {
+            $members = $query->orderBy('id')->paginate(15);
+        }
+        //$members = $query->orderBy('id')->paginate(15);
         return view('members.index', ['members'=>$members]);
     }
 
