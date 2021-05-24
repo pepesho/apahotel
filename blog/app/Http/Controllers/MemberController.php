@@ -15,13 +15,13 @@ class MemberController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Member::with('borrows');
+        $query = Member::withCount('borrows');
         if ($request->id) {
             $query->where('id', $request->id);
-        } else  {$query -> select('*');}
+        }
         if ($request->email) {
             $query->where('email', 'LIKE', "%$request->email%");
-        } else  {$query -> select('*');}
+        }
         $members = $query->orderBy('id')->paginate(15);
         return view('members.index', ['members'=>$members]);
     }
