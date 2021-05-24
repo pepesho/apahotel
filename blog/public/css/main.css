@@ -1,22 +1,11 @@
+body {
+    margin: 0;
+}
+
+/* ヘッダー */
 header {
-    /* padding: 20px 10px; */
     background-color: #dddcd6;
 }
-
-body {
-    /* margin: 0; */
-    text-align: center;
-}
-
-/* main {
-    margin-top: 30px;
-} */
-
-/* ナビゲーションの親要素 */
-/* .container {
-    width: 960px;
-    margin: 0 auto;
-} */
 
 /* ナビゲーション */
 .navigation_wrapper {
@@ -24,6 +13,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+/* アイコン自体 */
+.fas {
+    font-size: 50px;
+    color: #1e62d0;
 }
 
 /* トップに戻るaタグ */
@@ -45,10 +40,26 @@ body {
     margin-right: 20px;
     /* margin: 0 0 0 auto; */
 }
-/* アイコン自体 */
-.fas {
-    font-size: 50px;
-    color: #1e62d0;
+
+/* メイン */
+main {
+    text-align: center;
+}
+h1 {
+    margin: 20px 0;
+}
+
+/* 職員ページ */
+/* 職員登録 */
+.register_form_wrapper {
+    margin: 0 auto;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register_form_input {
+    width: 250px;
 }
 
 /*フォーム全体*/
