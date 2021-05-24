@@ -23,5 +23,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('ledgers', 'LedgerController');
     Route::resource('catalogs', 'CatalogController');
     Route::resource('borrows', 'BorrowController');
-    // Route::get('borrows', 'BorrowController@query')->name('query');
+    // Route::get('borrows/query', 'BorrowController@query')->name('borrows.query');
+    // Route::get('borrows', 'BorrowController@index')->name('borrows.index');
+    // Route::post('borrows', 'BorrowController@store')->name('borrows.store');
+    // Route::delete('borrows/{id}', 'BorrowController@destroy')->name('borrows.destroy');
+
 });
