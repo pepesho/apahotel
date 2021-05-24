@@ -4,9 +4,19 @@
 
 <h1>書籍在庫一覧</h1>
 <p class="new_button"><a href="{{ route('ledgers.create') }}" class="text">新規入荷</a></p>
+<div class="serch_form">
+        <form action="{{ route('ledgers.index')}}" method="post" id="form1">
+        @csrf
+        @method('get')
+
+        <input type="search" name="title" value="" placeholder="タイトルで検索" id="sbox">
+        <input type="search" name="author" value="" placeholder="著者名で検索" id="sbox">
+        <input type="submit" value="検索" id="sbtn">
+        </form>
+    </div>
 <table>
     <tr>
-        <th>貸出No</th>
+        <th>書籍ID</th>
         <th id="table1">タイトル</th>
         <th>著者</th>
         <th id="table1">入荷日</th>

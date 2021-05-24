@@ -13,11 +13,25 @@ class LedgerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $ledgers = Ledger::with(['catalog','borrows'])->orderBy('id')->paginate(15);
+        $query = Ledger::with('catalog');
+        if($request->title){
+            $query->whereHas('catalog',function($query) use ($request){
+                $query->where('title','LIKE', '%'.$request->title.'%');
+            });
+        } 
+        if ($request->author) {
+            $query->whereHas('catalog',function($query) use ($request){
+                $query->where('author','LIKE', '%'.$request->author.'%');
+            });
+        }
+            // $query = Catalog::where('title', 'LIKE', '%'.$request->title.'%')->get();//->with(['catalog', 'borrows'])->get();
+            //ddd($query);
+            $ledgers = $query->orderBy('id')->paginate(15);
         // dd($ledgers);
         return view('ledgers.index', ['ledgers' => $ledgers]);
+        
     }
 
     /**
