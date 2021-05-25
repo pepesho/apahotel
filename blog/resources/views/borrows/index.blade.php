@@ -2,7 +2,6 @@
 @section('content')
     {{-- 会員ID検索 --}}
     @include('commons/flash')
-    <div id="search">
         <h1>貸出・返却</h1>
         <h2>照会</h2>
         <div class="borrow_form_wrapper">
@@ -19,9 +18,7 @@
                 </form>
             </div>
         </div>
-    </div>
     <p>{{ session('error') }}</p>
-    @if ($search_flag)
         <div id="borrow_form">
             <h2>貸出</h2>
             <div class="borrow_form_wrapper">
@@ -29,11 +26,12 @@
                     <form action="{{ route('borrows.store') }}" method="post">
                     @csrf
                     <p>本のID<br><input type="text" name="ledger_id" class="search_form_input"></p>
-                    <p>会員ID<br><input type="text" name="member_id" value="{{ $borrows[0]->member_id }}" class="search_form_input"></p>
+                    <p>会員ID<br><input type="text" name="member_id" value="" class="search_form_input"></p>
                     <button id="borrow" class="btn btn-primary">貸出</button>
                     </form>
                 </div>
             </div>
+            @if ($search_flag)
             <h2>返却</h2>
             <table>
                 <tr>
