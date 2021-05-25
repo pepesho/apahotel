@@ -8,7 +8,7 @@
 @csrf
 <dl>
     <dt>書籍番号</dt>
-    <dd><input type="text" name="catalog_id"></dd>
+    <dd><input type="text" name="catalog_id" class="form_input"></dd>
 </dl>
 <button type="submit" class="btn btn-primary">登録する</button>
 </form>

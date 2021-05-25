@@ -1,3 +1,9 @@
+/* エラーメッセージ表示変更 */
+.alert {
+    color: red;
+    list-style: none;
+}
+
 /* ボディ */
 body {
     margin: 0;
@@ -74,6 +80,17 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+/* 職員詳細 */
+.edit_delete_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    margin: 0 auto;
+}
+.users_show_table {
+    width: 500px;
 }
 
 /* 貸出・返却ページ */

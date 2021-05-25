@@ -2,13 +2,15 @@
 
 @section('content')
 <h1>職員詳細</h1>
-<a href="{{ route('users.edit',$user->id) }}">変更する</a>
-<form action="{{ route('users.destroy', $user->id) }}" method="POST">
-@csrf
-@method('delete')
-<button type="submit">削除する</button>
-</form>
-<table>
+<div class="edit_delete_wrapper">
+    <a href="{{ route('users.edit',$user->id) }}">変更する</a>
+    <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+        @csrf
+        @method('delete')
+        <button type="submit">削除する</button>
+    </form>
+</div>
+<table class="users_show_table">
     <tr>
         <th>職員番号</th>
         <th>名前</th>
