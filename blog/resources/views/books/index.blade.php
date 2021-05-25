@@ -25,10 +25,15 @@
         <input type="search" name="author" value="" placeholder="著者名で検索" id="sbox">
         <input type="submit" value="検索" id="sbtn">
         <br>
-        <select name="sort">
-        <option value="asc">昇順（カタログID）</option>
-        <option value="desc">降順（カタログID）</option>
-        </select>
+        </form>
+        <form action="{{ route('catalogs.index') }}" method="post" id="sbox">
+            @csrf
+            @method('get')
+            <select name="sort" onchange="submit(this.form)">
+                <option value="">並べ替え</option>
+                <option value="asc">昇順（カタログID）</option>
+                <option value="desc">降順（カタログID）</option>
+            </select>
         </form>
     </div>
     <table>
