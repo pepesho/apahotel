@@ -22,15 +22,13 @@
                         @csrf
                         <p>
                             <label>メールアドレス</label><br>
-                            <input class="login_form_input" type="email" name="email" value="{{ old('email') }}">
+                            <input class="form_input" type="email" name="email" value="{{ old('email') }}">
                         </p>
                         <p>
                             <label>パスワード</label><br>
-                            <input class="login_form_input" type="password" name="password" value="">
+                            <input class="form_input" type="password" name="password" value="">
                         </p>
-                        <p>
-                            <button type="submit" class="btn btn-primary">ログイン</button>
-                        </p>
+                        <button type="submit" class="btn btn-primary">ログイン</button>
                     </form>
                 </div>
             </div>

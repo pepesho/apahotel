@@ -23,26 +23,24 @@
                         @csrf
                         <p>
                             <label>名前<br>
-                            <input class="register_form_input" type="text" name="name"
+                            <input class="form_input" type="text" name="name"
                                             value="{{ old('name') }}"></label>
                         </p>
                         <p>
                             <label>メールアドレス<br>
-                            <input class="register_form_input" type="email" name="email"
+                            <input class="form_input" type="email" name="email"
                                             value="{{ old('email') }}"></label>
                         </p>
                         <p>
                             <label>パスワード<br>
-                            <input class="register_form_input" type="password" name="password" value=""></label>
+                            <input class="form_input" type="password" name="password" value=""></label>
                         </p>
                         <p>
                             <label>パスワード確認<br>
-                            <input class="register_form_input" type="password"
+                            <input class="form_input" type="password"
                                 name="password_confirmation" value=""></label>
                         </p>
-                        <p>
-                            <button type="submit" class="btn btn-primary">職員登録</button>
-                        </p>
+                        <button type="submit" class="btn btn-primary">職員登録</button>
                     </form>
                 </div>
             </div>
