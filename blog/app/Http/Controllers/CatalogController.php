@@ -64,7 +64,7 @@ class CatalogController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'ISBN_id'=>'required|integer',
+            'ISBN_id'=>'required|integer|max:13',
             'title'=>'required',
             'author' => 'required',
             'genre_id'=>'required',
