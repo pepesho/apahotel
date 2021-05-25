@@ -14,6 +14,7 @@
         <br>
         <input type="submit" value="検索" id="sbtn">
     </form>
+</div>
     <form action="{{ route('members.index') }}" method="post">
         @csrf
         @method('get')
@@ -23,7 +24,7 @@
             <option value="desc">降順（会員ID）</option>
         </select>
     </form>
-</div>
+
 <table>
     <tr>
         <th>会員ID</th>
