@@ -7,15 +7,17 @@
 <form action="{{ route('members.index')}}" method="post">
     @csrf
     @method('get')
-    <input type="search" name="id" value="" placeholder="IDで検索" id="sbox">
-    <input type="search" name="email" value="" placeholder="メールアドレスで検索" id="sbox">
+    <input type="search" name="id" value="" placeholder="IDで検索" class="search_form_input">
+    <br>
+    <input type="search" name="email" value="" placeholder="メールアドレスで検索" class="search_form_input">
+    <br>
     <input type="submit" value="検索" id="sbtn">
 </form>
 <form action="{{ route('members.index') }}" method="post">
     @csrf
     @method('get')
-    <select name="sort" onchange="submit(this.form)">
-        <option value="">並べ替え</option>
+    <select name="sort" onchange="submit(this.form)"  class="search_form_input">
+        <option value="" disabled selected style='display:none;'>並べ替え</option>
         <option value="asc">昇順（会員ID）</option>
         <option value="desc">降順（会員ID）</option>
     </select>

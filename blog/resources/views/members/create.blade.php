@@ -4,14 +4,22 @@
 @include('commons.flash')
 <form action="{{route('members.store')}}" method="post">
 @csrf
-<p>名前: <input type="text" name="name" value=""></p>
-<p>郵便番号: <input type="text" name="postal" value=""></p>
-<p>住所: <input type="text" name="address" value=""></p>
-<p>電話番号: <input type="tel" name="tel" value=""></p>
-<p>メールアドレス: <input type="email" name="email" value=""></p>
-<p>生年月日: <input type="date" name="birthday" value="2000-01-01"></p>
+<dl>
+    <dt>名前</dt>
+    <dd><input type="text" name="name" value="" class="form_input"></dd>
+    <dt>郵便番号</dt>
+    <dd><input type="text" name="postal" value="" class="form_input"></dd>
+    <dt>住所</dt>
+    <dd><input type="text" name="address" value="" class="form_input"></dd>
+    <dt>電話番号</dt>
+    <dd><input type="tel" name="tel" value="" class="form_input"></dd>
+    <dt>メールアドレス</dt>
+    <dd><input type="email" name="email" value="" class="form_input"></dd>
+    <dt>生年月日</dt>
+    <dd><input type="date" name="birthday" value="" class="form_input"></dd>
+</dl>
 
-<button type="submit">新規登録</button>
+<button type="submit" class="btn btn-primary">新規登録</button>
 </form>
 <a href="{{route('members.index')}}">一覧ページに戻る</a>
 @endsection

@@ -9,20 +9,20 @@
 @method('put')
 <dl>
 <dt>ISBN番号</dt>
-<dd><input type="text" name="ISBN_id" value="{{ $book->ISBN_id }}"></dd>
+<dd><input type="text" name="ISBN_id" value="{{ $book->ISBN_id }}" class="form_input"></dd>
 <dt> タイトル</dt>
-<dd><input type="text" name="title" value="{{ $book->title }}"></dd>
+<dd><input type="text" name="title" value="{{ $book->title }}" class="form_input"></dd>
 <dt>著者</dt>
-<dd><input type="text" name="author" value="{{ $book->author }}"></dd>
+<dd><input type="text" name="author" value="{{ $book->author }}" class="form_input"></dd>
 <dt>ジャンル</dt>
-<dd><input type="text" name="genre_id" value="{{ $book->genre_id }}"></dd>
+<dd><input type="text" name="genre_id" value="{{ $book->genre_id }}" class="form_input"></dd>
 <dt>出版社</dt>
-<dd><input type="text" name="publisher" value="{{ $book->publisher }}"></dd>
+<dd><input type="text" name="publisher" value="{{ $book->publisher }}" class="form_input"></dd>
 <dt>出版日</dt>
-<dd><input type="date" name="publisher_date" value="{{ $book->publisher_date }}"></dd>
+<dd><input type="date" name="publisher_date" value="{{ $book->publisher_date }}" class="form_input"></dd>
 </dl>
 
- <button type="submit">変更する</button>
+ <button type="submit" class="btn btn-primary">変更する</button>
 </form>
 <a href="{{ route('catalogs.index') }}">一覧ページに戻る</a>
 @endsection

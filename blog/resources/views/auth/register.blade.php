@@ -44,10 +44,7 @@
                     </form>
                 </div>
             </div>
-            <p>または</p>
-            <p>
-                <a href="{{ route('login') }}">ログイン</a>
-            </p>
+            <p>または<a href="{{ route('login') }}">ログイン</a></p>
         </main>
     </body>
 </html>

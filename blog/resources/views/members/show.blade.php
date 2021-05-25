@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<h1>会員詳細</h1>
 <a href="{{ route('members.edit',$member->id) }}">変更する</a>
 <form action="{{ route('members.destroy', $member) }}" method="POST" id="delete-form">
 @csrf
@@ -16,7 +16,6 @@ function deleteMember(){
     }
 }
 </script>
-<h1>会員詳細</h1>
 <table>
     <tr>
         <th>ID</th>

@@ -16,5 +16,4 @@
     </tr>
 @endforeach
 </table>
-    <a href="/">ホーム画面に移動</a>
 @endsection

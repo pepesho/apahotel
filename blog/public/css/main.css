@@ -46,6 +46,23 @@ h1 {
 }
 .form_input {
     width: 250px;
+    border: solid 1px #aaa;
+    border-radius: 5px;
+    background-color: #eee;
+    outline: none;
+}
+.form_input:focus {
+    background-color: #ccccff;
+}
+.search_form_input {
+    width: 200px;
+    border: solid 1px #aaa;
+    border-radius: 5px;
+    background-color: #eee;
+    outline: none;
+}
+.search_form_input:focus {
+    background-color: #ccccff;
 }
 
 /* 職員ページ */
@@ -61,7 +78,7 @@ h1 {
 
 /* 貸出・返却ページ */
 /* 会員ID照会 */
-.reference_form_wrapper {
+.borrow_form_wrapper {
     margin: 0 auto;
     width: 400px;
     height: 200px;
@@ -71,21 +88,7 @@ h1 {
     border: solid 2px #1E62D0;
 }
 
-/*フォーム全体*/
-#form1 {
-    /* position:relative;フォームの相対位置	 */
-    max-width: 960px; /*フォームのサイズ*/
-    margin-bottom: 15px; /*フォームの下に余白*/
-}
-/*検索ボックス*/
-#sbox {
-    /* position:relative;フォームの位置	 */
-    outline: 0; /*クリック時の青い枠線消す*/
-    height: 30px; /*検索ボックスの高さ*/
-    padding: 5px; /*テキスト位置調整*/
-    border-radius: 2px 0 0 2px; /*検索ボックスの角を丸める*/
-    background: #eee; /*検索ボックスの背景カラー*/
-}
+
 /*検索ボタン*/
 #sbtn {
     width: 50px; /*検索ボタンの横幅*/
@@ -122,6 +125,12 @@ td {
     border: solid 1px;
     padding: 10px;
 }
+td {
+	background: #eee;
+}
+tr:nth-child(odd) td {
+	background: #fff;
+}
 
 /* Pタグの設定 */
 .new_button {
@@ -136,10 +145,6 @@ td {
 /* Aタグの文字の設定 */
 .text {
     color: snow;
-}
-/* 検索フォームの位置 */
-.serch_form {
-    padding: 0 15%;
 }
 /* ページリンクの設定 */
 nav ul{
