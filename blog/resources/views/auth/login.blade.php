@@ -32,10 +32,7 @@
                     </form>
                 </div>
             </div>
-            <p>または</p>
-            <p>
-                <a href="{{ route('register') }}">職員登録</a>
-            </p>
+            <p>または<a href="{{ route('register') }}">職員登録</a></p>
         </main>
     </body>
 </html>

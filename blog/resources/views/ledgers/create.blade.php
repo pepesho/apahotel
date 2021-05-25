@@ -10,8 +10,8 @@
     <dt>書籍番号</dt>
     <dd><input type="text" name="catalog_id"></dd>
 </dl>
-<button type="submit">登録する</button>
+<button type="submit" class="btn btn-primary">登録する</button>
 </form>
-<a href="{{ route('ledgers.index') }}">一覧画面</a>
+<a href="{{ route('ledgers.index') }}">一覧画面に戻る</a>
 
 @endsection

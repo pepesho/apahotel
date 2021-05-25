@@ -13,7 +13,7 @@
             <dt>到着日</dt>
             <dd><input type="date" name="arrival_day" value="{{ $ledger->arrival_day }}"></dd>
         </dl>
-        <button type="submit">変更する</button>
+        <button type="submit" class="btn btn-primary">変更する</button>
     </form>
     <a href="{{ route('ledgers.index') }}">一覧ページに戻る</a>
 @endsection

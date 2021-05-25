@@ -4,33 +4,38 @@
     @include('commons/flash')
     <div id="search">
         <h1>貸出・返却</h1>
-        <div class="reference_form_wrapper">
-            <div class="reference_form">
-            <form action="{{ route('borrows.index') }}" method="post">
-                @csrf
-                @method('get')
-                <p>
-                    <label>会員ＩＤ
-                    <br>
-                    <input class="form_input" type="text" name="member_id" value="{{ old('member_id') }}"></label>
-                </p>
-                <button  class="btn btn-primary" type="submit" id="query">照会</button>
-            </form>
+        <h2>照会</h2>
+        <div class="borrow_form_wrapper">
+            <div class="borrow_form">
+                <form action="{{ route('borrows.index') }}" method="post">
+                    @csrf
+                    @method('get')
+                    <p>
+                        <label>会員ＩＤ
+                        <br>
+                        <input class="form_input" type="text" name="member_id" value="{{ old('member_id') }}"></label>
+                    </p>
+                    <button class="btn btn-primary" type="submit" id="query">照会</button>
+                </form>
             </div>
         </div>
     </div>
     <p>{{ session('error') }}</p>
     @if ($search_flag)
         <div id="borrow_form">
-            <h1>貸出</h1>
-            <form action="{{ route('borrows.store') }}" method="post">
-                @csrf
-                <p>本のID<input type="text" name="ledger_id"></p>
-                <p>会員ID<input type="text" name="member_id" value=""></p>
-                <button id="borrow">貸出</button>
-            </form>
-            <h1>返却</h1>
-            <table border="1">
+            <h2>貸出</h2>
+            <div class="borrow_form_wrapper">
+                <div class="borrow_form">
+                    <form action="{{ route('borrows.store') }}" method="post">
+                    @csrf
+                    <p>本のID<br><input type="text" name="ledger_id" class="search_form_input"></p>
+                    <p>会員ID<br><input type="text" name="member_id" value="{{ $borrows[0]->member_id }}" class="search_form_input"></p>
+                    <button id="borrow" class="btn btn-primary">貸出</button>
+                    </form>
+                </div>
+            </div>
+            <h2>返却</h2>
+            <table>
                 <tr>
                     <th>書籍名</th>
                     <th>会員名</th>
@@ -51,7 +56,7 @@
                         </tr>
                 @endforeach
             </table>
-            <button type="submit" id="return">返却</button>
+            <button type="submit" id="return" class="btn btn-primary">返却</button>
             </form>
     @endif
     </div>
