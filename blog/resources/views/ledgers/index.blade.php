@@ -2,7 +2,8 @@
 @section('content')
 <h1>館内書籍一覧</h1>
 <p class="new_button"><a href="{{ route('ledgers.create') }}" class="text">新規入荷</a></p>
-<div>
+<button id="search_show">検索フォームの表示/非表示</button>
+<div id="search_form">
     <form action="{{ route('ledgers.index')}}" method="post">
         @csrf
         @method('get')
@@ -47,4 +48,10 @@
 @endforeach
 </table>
 {{ $ledgers->appends(Request::all())->links() }}
+<script>
+    $('#search_form').hide();
+    $('#search_show').click(function (){
+        $('#search_form').slideToggle(1000);
+    });
+</script>
 @endsection
