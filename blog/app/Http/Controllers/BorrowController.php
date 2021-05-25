@@ -11,28 +11,21 @@ use Request as PostRequest;
 
 class BorrowController extends Controller
 {
-    // public function query(Request $request) {
-    //     $query = Borrow::with(['ledger.catalog','member']);
-    //     $query->where('member_id', $request->member_id);
-    //     $borrows = $query->get();
-    //     return view('borrows.query',['borrows' => $borrows]);
-    // }    
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
-        
-        $query = Borrow::with(['ledger.catalog','member']);
-         if ($request->member_id) {
-             $query->where('member_id', $request->member_id);
-         } else  {$query -> select('*');}
-        $borrows = $query->get();
-        return view('borrows.index', ['borrows' => $borrows]);
+        $borrows = [];
+        if ($request->all()) {
+            $query = Borrow::with(['ledger.catalog','member']);
+            if ($request->member_id) {
+                $query->where('member_id', $request->member_id);
+            } 
+            $borrows = $query->get();
+            $search_flag = true;
+        } else {
+            $search_flag = false;
+        }
+        return view('borrows.index', ['borrows' => $borrows, 'search_flag' => $search_flag]);
     }
- 
     /**
      * Show the form for creating a new resource.
      *
@@ -49,16 +42,22 @@ class BorrowController extends Controller
         $time = \Carbon\Carbon::now()->subDays(60);
         $borrow = Borrow::with(['ledger.catalog','member']);
         $this->validate($request, [
-            // 'ledger_id'=>'required',
+            'ledger_id'=>'required',
             'member_id'=>'required',
         ]);
         $borrow = $borrow->get();
+        $count = $borrow->where('member_id', $request->member_id)->count();
+        // dd($count);
         //データベースへの追加
         $borrow = new Borrow;
         $borrow->ledger_id = $request->ledger_id;
-        $borrow->member_id = $request->member_id;
+        if ($count < 5) {
+            $borrow->member_id = $request->member_id;
+        } else {
+            return redirect(route('borrows.index'))->with('error', '上限です！！！');
+        }
         $borrow->borrow_date = \Carbon\Carbon::now();
-        if($borrow->ledger->catalog->publisher_date >= $time){
+        if ($borrow->ledger->catalog->publisher_date >= $time) {
             $borrow->return_date = \Carbon\Carbon::now()->addDays(10);
         } else {
             $borrow->return_date = \Carbon\Carbon::now()->addDays(15);
@@ -66,7 +65,6 @@ class BorrowController extends Controller
         $borrow->save();
         return redirect(route('borrows.index'));
     }
-
     /**
      * Display the specified resource.
      *
