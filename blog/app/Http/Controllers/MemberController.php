@@ -54,10 +54,10 @@ class MemberController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'postal' => 'required|max:11',
-            'address' => 'required|max:255',
-            'tel' => 'required|max:255',
-            'email' => 'required|max:255',
+            'postal' => 'required|integer|max:11',
+            'address' => 'required|integer|max:255',
+            'tel' => 'required|integer|max:255',
+            'email' => 'required|email|max:255|unique',
             'birthday' => 'required|date'
         ]);
         $member = new Member;
@@ -104,10 +104,10 @@ class MemberController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'postal' => 'required|max:11',
-            'address' => 'required|max:255',
-            'tel' => 'required|max:255',
-            'email' => 'required|max:255',
+            'postal' => 'required|integer|max:11',
+            'address' => 'required|integer|max:255',
+            'tel' => 'required|integer|max:255',
+            'email' => 'required|email|max:255|unique',
             'birthday' => 'required|date'
         ]);
         $member->update($request->all());
