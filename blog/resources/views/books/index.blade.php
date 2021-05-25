@@ -27,16 +27,17 @@
             <br>
             <input type="submit" value="検索" id="sbtn">
         </form>
-        <form action="{{ route('catalogs.index') }}" method="post">
-            @csrf
-            @method('get')
-            <select name="sort" onchange="submit(this.form)" class="search_form_input">
-                <option value="" disabled selected style='display:none;'>並べ替え</option>
-                <option value="asc">昇順（カタログID）</option>
-                <option value="desc">降順（カタログID）</option>
-            </select>
-        </form>
     </div>
+    <form action="{{ route('catalogs.index') }}" method="post">
+        @csrf
+        @method('get')
+        <select name="sort" onchange="submit(this.form)" class="search_form_input">
+            <option value="" disabled selected style='display:none;'>並べ替え</option>
+            <option value="asc">昇順（カタログID）</option>
+            <option value="desc">降順（カタログID）</option>
+        </select>
+    </form>
+    
     <table>
         <tr>
             <th>カタログID</th>

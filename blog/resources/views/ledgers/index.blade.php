@@ -13,6 +13,7 @@
         <br>
         <input type="submit" value="検索" id="sbtn">
     </form>
+</div>
     <form action="{{ route('ledgers.index') }}" method="post">
         @csrf
         @method('get')
@@ -22,7 +23,7 @@
             <option value="desc">降順（書籍ID）</option>
         </select>
     </form>
-</div>
+
 <table>
     <tr>
         <th>書籍ID</th>
