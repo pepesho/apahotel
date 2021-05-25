@@ -3,13 +3,21 @@
     {{-- 会員ID検索 --}}
     @include('commons/flash')
     <div id="search">
-        <h1>会員ID検索</h1>
-        <form action="{{ route('borrows.index') }}" method="post">
-            @csrf
-            @method('get')
-            <input type="text" name="member_id" value="{{ old('member_id') }}">
-            <button type="submit" id="query">照会</button>
-        </form>
+        <h1>貸出・返却</h1>
+        <div class="reference_form_wrapper">
+            <div class="reference_form">
+            <form action="{{ route('borrows.index') }}" method="post">
+                @csrf
+                @method('get')
+                <p>
+                    <label>会員ＩＤ
+                    <br>
+                    <input class="form_input" type="text" name="member_id" value="{{ old('member_id') }}"></label>
+                </p>
+                <button  class="btn btn-primary" type="submit" id="query">照会</button>
+            </form>
+            </div>
+        </div>
     </div>
     <p>{{ session('error') }}</p>
     @if ($search_flag)

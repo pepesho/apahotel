@@ -18,20 +18,18 @@
 </form>
 <table>
     <tr>
-        <th id="table1">会員ID</th>
-        <th id="table1">名前</th>
-        <th id="table1">メールアドレス</th>
-        <th id="table1">貸出冊数</th>
+        <th>会員ID</th>
+        <th>名前</th>
+        <th>メールアドレス</th>
+        <th>貸出冊数</th>
     </tr>
 @foreach ($members as $member)
-
     <tr>
-        <td id="table1">{{ $member->id }}</td>
+        <td>{{ $member->id }}</td>
         <td><a href="{{ route('members.show', $member->id )}}">{{ $member->name }}</td>
         <td>{{ $member->email }}</td>
         <td>{{ $member->borrows_count }}</td>
     </tr>
-    
 @endforeach
 </table>
 {{-- {{ $members->appends(Request::all())->links() }} --}}
