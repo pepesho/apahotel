@@ -17,12 +17,36 @@ function deleteMember(){
 }
 </script>
 <h1>会員詳細</h1>
-<p>ID： {{ $member->id }} </p>
-<p>名前： {{ $member->name }} </p>
-<p>郵便番号: {{ $member->postal }} </p>
-<p>住所: {{ $member->address }}</p>
-<p>電話番号:{{ $member->tel }} </p>
-<p>メールアドレス： {{ $member->email }} </p>
-<p>生年月日: {{ $member->birthday }} </p>
+<table>
+    <tr>
+        <th>ID</th>
+        <td id="table1">{{ $member->id }}</td>
+    </tr>
+    <tr>
+        <th id="table1">名前</th>
+        <td>{{ $member->name }}</td>
+    </tr>
+    <tr>
+        <th>郵便番号</th>
+        <td id="table1"> {{ $member->postal }}</td>
+    </tr>
+    <tr>
+        <th id="table1">住所</th>
+        <td>{{ $member->address }}</td>
+    </tr>
+    <tr>
+        <th>電話番号</th>
+        <td id="table1">{{ $member->tel }}</td>
+    </tr>
+    <tr>
+        <th id="table1">メールアドレス</th>
+        <td>{{ $member->email }}</td>
+    </tr>
+    <tr>
+        <th>生年月日</th>
+        <td id="table1">{{ $member->birthday }}</td>
+    </tr>
+</table>
+
 <a href="{{route('members.index')}}">一覧ページに戻る</a>
 @endsection

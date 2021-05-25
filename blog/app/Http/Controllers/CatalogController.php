@@ -50,7 +50,9 @@ class CatalogController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        $book = Catalog::with('genre');
+        $genres = Genre::withCount('catalogs')->get();
+        return view('books.create', ['book' => $book, 'genres'=>$genres]);
     }
 
     /**
@@ -62,12 +64,12 @@ class CatalogController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'ISBN_id'=>'required',
+            'ISBN_id'=>'required|integer',
             'title'=>'required',
             'author' => 'required',
             'genre_id'=>'required',
             'publisher'=>'required',
-            'publisher_date'=>'required',
+            'publisher_date'=>'required|date',
         ]);
         $book = new Catalog;
         $book->ISBN_id =  $request->ISBN_id;
@@ -116,12 +118,12 @@ class CatalogController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'ISBN_id'=>'required',
+            'ISBN_id'=>'required|integer',
             'title'=>'required',
             'author' => 'required',
             'genre_id'=>'required',
             'publisher'=>'required',
-            'publisher_date'=>'required',
+            'publisher_date'=>'required|date',
         ]);
         $book = Catalog::find($id);
         $book->ISBN_id =  $request->ISBN_id;

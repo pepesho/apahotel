@@ -17,7 +17,28 @@ function deleteledgers(){
 }
 </script>
 <h1>書籍詳細</h1>
-<p>カタログID： {{ $ledger->catalog_id }} </p>
-<p>到着日： {{ $ledger->arrival_day }} </p>
+<table>
+    <tr>
+        <th>カタログID</th>
+        <td id="table1">{{ $ledger->catalog_id }}</td>
+    </tr>
+    <tr>
+        <th id="table1">タイトル</th>
+        <td>{{ $ledger->catalog->title }}</td>
+    </tr>
+    <tr>
+        <th>著者</th>
+        <td id="table1">{{ $ledger->catalog->author }}</td>
+    </tr>
+    <tr>
+        <th id="table1">出版日</th>
+        <td>{{ $ledger->catalog->publisher_date}}</td>
+    </tr>
+    <tr>
+        <th>入荷日</th>
+        <td id="table1">{{ $ledger->arrival_day }}</td>
+    </tr>
+</table>
+
 <a href="{{route('ledgers.index')}}">一覧ページに戻る</a>
 @endsection
