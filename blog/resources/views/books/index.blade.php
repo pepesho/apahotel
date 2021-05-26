@@ -3,7 +3,8 @@
 @section('content')
 <h1>登録書籍</h1>
 <div class="main_form">
-    <p><a href="{{route('catalogs.isbn')}}" class="btn btn-primary create_edit_button">新規登録</a></p>
+    <p><a href="{{ route('catalogs.create') }}">新規登録</a></p>
+    <p><a href="{{route('catalogs.isbn')}}" class="btn btn-primary create_edit_button">isbn新規登録</a></p>
     <button id="search_show">検索フォームを表示/非表示</button>
     <div id="search_form">     
         <form action="{{ route('catalogs.index')}}" method="post">
@@ -54,7 +55,7 @@
             <td>{{ $book->ISBN_id }}</td>
             <td><a href="{{ route('catalogs.show', $book->id )}}">{{ $book->title }}</a></td>
             <td>{{$book->genre_id}}</td><td>{{$book->author}}</td>
-            <td><a href="{{route('ledgers.create',$book->ISBN_id)}}">追加</a></td>
+            <td><a href="{{route('ledgers.create',$book->id)}}">追加</a></td>
         </tr>
     @endforeach
     </table>
