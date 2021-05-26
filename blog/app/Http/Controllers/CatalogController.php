@@ -107,9 +107,8 @@ class CatalogController extends Controller
     {
         
         $this->validate($request, [
-            'ISBN_id'=>'required|integer|max:13',
+            'ISBN_id'=>'required|max:13',
             'title'=>'required',
-            'author' => 'required',
             'genre_id'=>'required',
             'publisher'=>'required',
             'publisher_date'=>'required|date',
