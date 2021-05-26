@@ -24,4 +24,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('catalogs', 'CatalogController');
     Route::resource('borrows', 'BorrowController');
     Route::resource('overdues', 'OverdueController');
+    Route::get('isbn', 'CatalogController@isbn')->name('catalogs.isbn');
+    Route::post('check', 'CatalogController@check')->name('catalogs.check');
+
 });

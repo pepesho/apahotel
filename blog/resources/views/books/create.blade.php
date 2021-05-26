@@ -7,7 +7,8 @@
     @csrf
     <dl>
         <dt>ISBN番号</dt>
-        <dd><input type="text" name="ISBN_id" class="form_input"></dd>
+        <dd>{{ $isbn }}</dd>
+        <input type="hidden" name="ISBN_id" class="form_input" value="{{ $isbn }}">
         <dt> タイトル</dt>
         <dd><input type="text" name="title" class="form_input"></dd>
         <dt>著者</dt>
