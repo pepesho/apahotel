@@ -2,7 +2,8 @@
 @section('content')
     {{-- 会員ID検索 --}}
     @include('commons/flash')
-        <h1>貸出・返却</h1>
+    <h1>貸出・返却</h1>
+    <div class="borrow_wrapper">
         <h2>照会</h2>
         <div class="borrow_form_wrapper">
             <div class="borrow_form">
@@ -18,23 +19,23 @@
                 </form>
             </div>
         </div>
-    <p>{{ session('error') }}</p>
-        <div id="borrow_form">
-            <h2>貸出</h2>
-            <div class="borrow_form_wrapper">
-                <div class="borrow_form">
-                    <form action="{{ route('borrows.store') }}" method="post">
-                    @csrf
-                    <p>本のID<br><input type="text" name="ledger_id" class="search_form_input"></p>
-                    <p>会員ID<br><input type="text" name="member_id" value="" class="search_form_input"></p>
-                    <button id="borrow" class="btn btn-primary">貸出</button>
-                    </form>
-                </div>
+        <p>{{ session('error') }}</p>
+        <h2>貸出</h2>
+        <div class="borrow_form_wrapper">
+            <div class="borrow_form">
+                <form action="{{ route('borrows.store') }}" method="post">
+                @csrf
+                <p>本のID<br><input type="text" name="ledger_id" class="form_input"></p>
+                <p>会員ID<br><input type="text" name="member_id" value="" class="form_input"></p>
+                <button id="borrow" class="btn btn-primary">貸出</button>
+                </form>
             </div>
-            @if ($search_flag)
+        </div>
+        @if ($search_flag)
             <h2>返却</h2>
             <table>
                 <tr>
+                    <th>書籍id</th>
                     <th>書籍名</th>
                     <th>会員名</th>
                     <th>貸出日</th>
@@ -46,6 +47,7 @@
                         @csrf
                         @method('delete')
                         <tr>
+                            <td>{{ $borrow->ledger->id }}</td>
                             <td>{{ $borrow->ledger->catalog->title }}</td>
                             <td>{{ $borrow->member->name }}</td>
                             <td>{{ $borrow->borrow_date }}</td>
@@ -56,6 +58,6 @@
             </table>
             <button type="submit" id="return" class="btn btn-primary">返却</button>
             </form>
-    @endif
+        @endif
     </div>
 @endsection

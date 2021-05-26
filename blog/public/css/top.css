@@ -1,9 +1,12 @@
 /* ヘッダー */
 .header_wrapper {
+   position: fixed;
+   width: 100%;
    height: 90px;
    display: flex;
    justify-content: center;
    align-items: center;
+   background-color: #bdd3da;
 }
 /* アイコン自体 */
 .fas {
@@ -20,7 +23,7 @@
 
 /* ログインフォーム */
 .login_form_wrapper {
-   margin: 70px auto 0;
+   margin: 70px auto 10px;
    width: 400px;
    height: 250px;
    border: solid 2px #1E62D0;

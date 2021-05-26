@@ -2,26 +2,33 @@
 
 @section('content')
     <h1>延滞リスト</h1>
-    
-    <form action="{{ route('overdues.index') }}" method="post">
-        @csrf
-        @method('get')
-        <input type="search" name="id" value="" placeholder="IDで検索" id="sbox">
-        <input type="search" name="name" value="" placeholder="名前で検索" id="sbox">
-        <input type="search" name="email" value="" placeholder="メールアドレスで検索" id="sbox">
-        <input type="submit" value="検索" id="sbtn">
-    </form>
-    <form action="{{ route('overdues.index') }}" method="post">
-        @csrf
-        @method('get')
-        <select name="sort" onchange="submit(this.form)">
-            <option value="">並べ替え</option>
-            <option value="asc">昇順（会員ID）</option>
-            <option value="desc">降順（会員ID）</option>
-        </select>
-    </form>
+    <button id="search_show">検索フォームを表示/非表示</button>
+    <div id="search_form"> 
+        <form action="{{ route('overdues.index') }}" method="post">
+            @csrf
+            @method('get')
+            <input type="search" name="id" value="" placeholder="IDで検索"  class="search_form_input">
+            <br>
+            <input type="search" name="name" value="" placeholder="名前で検索"  class="search_form_input">
+            <br>
+            <input type="search" name="email" value="" placeholder="メールアドレスで検索"  class="search_form_input">
+            <br>
+            <input type="submit" value="検索" id="sbtn">
+        </form>
+    </div>
+    <div class="sort_wrapper">
+        <form action="{{ route('overdues.index') }}" method="post">
+            @csrf
+            @method('get')
+            <select name="sort" onchange="submit(this.form)" class="search_form_input">
+                <option value="">並べ替え</option>
+                <option value="asc">昇順（会員ID）</option>
+                <option value="desc">降順（会員ID）</option>
+            </select>
+        </form>
+    </div>
 
-    <table border="1">
+    <table class="index_table">
         <tr>
             <th>会員ID</th>
             <th>延滞者</th>
@@ -42,4 +49,10 @@
         @endforeach
     </table>
     {{ $overdues->appends(Request::all())->links() }}
+    <script>
+        $('#search_form').hide();
+        $('#search_show').click(function (){
+            $('#search_form').slideToggle(1000);
+        });
+    </script>
 @endsection

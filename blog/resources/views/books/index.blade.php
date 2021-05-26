@@ -28,17 +28,18 @@
             <input type="submit" value="検索" id="sbtn">
         </form>
     </div>
-    <form action="{{ route('catalogs.index') }}" method="post">
-        @csrf
-        @method('get')
-        <select name="sort" onchange="submit(this.form)" class="search_form_input">
-            <option value="" disabled selected style='display:none;'>並べ替え</option>
-            <option value="asc">昇順（カタログID）</option>
-            <option value="desc">降順（カタログID）</option>
-        </select>
-    </form>
-    
-    <table>
+    <div class="sort_wrapper">
+        <form action="{{ route('catalogs.index') }}" method="post">
+            @csrf
+            @method('get')
+            <select name="sort" onchange="submit(this.form)" class="search_form_input">
+                <option value="" disabled selected style='display:none;'>並べ替え</option>
+                <option value="asc">昇順（カタログID）</option>
+                <option value="desc">降順（カタログID）</option>
+            </select>
+        </form>
+    </div>
+    <table class="index_table">
         <tr>
             <th>カタログID</th>
             <th>ISBN番号</th>

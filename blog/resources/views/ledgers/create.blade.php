@@ -4,14 +4,16 @@
 
 <h1>書籍在庫の追加</h1>
 @include('commons/flash')
-<form action="{{ route('ledgers.store') }}" method="POST">
-@csrf
-<dl>
-    <dt>書籍番号</dt>
-    <dd><input type="text" name="catalog_id" class="form_input"></dd>
-</dl>
-<button type="submit" class="btn btn-primary">登録する</button>
-</form>
+<div class="edit_create_form_wrapper">
+    <form action="{{ route('ledgers.store') }}" method="POST">
+    @csrf
+    <dl>
+        <dt>書籍番号</dt>
+        <dd><input type="text" name="catalog_id" class="form_input"></dd>
+    </dl>
+    <button type="submit" class="btn btn-primary">登録する</button>
+    </form>
+</div>
 <a href="{{ route('ledgers.index') }}">一覧画面に戻る</a>
 
 @endsection

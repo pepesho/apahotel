@@ -11,15 +11,19 @@ body {
 
 /* ヘッダー */
 header {
-    background-color: #dddcd6;
+    background-color: #bdd3da;
 }
 
 /* ナビゲーション */
 .navigation_wrapper {
+    top: 0;
+    position: fixed;
+    width: 100%;
     height: 90px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #bdd3da;
 }
 /* アイコン自体 */
 .fas {
@@ -29,6 +33,9 @@ header {
 /* トップに戻るaタグ */
 .nav_top {
     margin-left: 20px;
+}
+.nav_top:hover {
+    text-decoration: none;
 }
 /* トップに戻る(図書管理システム) */
 .nav_top_text {
@@ -40,19 +47,19 @@ header {
 /* ログアウトするaタグ */
 .nav_logout {
     margin-right: 20px;
-    /* margin: 0 0 0 auto; */
 }
 
 /* メイン */
 main {
+    padding-top: 90px;
     text-align: center;
 }
 h1 {
-    margin: 20px auto;
+    margin: 20px;
 }
 .form_input {
     width: 250px;
-    border: solid 1px #aaa;
+    border: solid 1px #888;
     border-radius: 5px;
     background-color: #eee;
     outline: none;
@@ -60,9 +67,21 @@ h1 {
 .form_input:focus {
     background-color: #ccccff;
 }
+#search_show {
+    border-radius: 5px;
+    outline: none;
+    margin: 0 auto 10px;
+}
+#search_form {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px 0;
+    border: solid 1px #1E62D0;
+}
 .search_form_input {
+    margin: 10px auto;
     width: 200px;
-    border: solid 1px #aaa;
+    border: solid 1px #888;
     border-radius: 5px;
     background-color: #eee;
     outline: none;
@@ -71,32 +90,102 @@ h1 {
     background-color: #ccccff;
 }
 
+/* テーブル */
+table {
+    text-align: center;
+    border-collapse: collapse;
+    margin: 0 auto 20px;
+}
+th {
+    background-color: paleturquoise;
+    /* color: saddlebrown; */
+}
+th,td {
+    border: solid 1px;
+    padding: 10px;
+}
+td {
+	background: #eee;
+}
+tr:nth-child(odd) td {
+	background: #fff;
+}
+
+/* フォーム */
+.form {
+    margin: 0 auto 10px;
+}
+
 /* 職員ページ */
+/* ユーザーフォーム */
+.user_form_wrapper {
+    margin: 0 auto 20px;
+    width: 400px;
+    height: 250px;
+    /* border: solid 2px #1E62D0; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
 /* 職員登録 */
 .register_form_wrapper {
-    margin: 0 auto;
+    margin: 0 auto 10px;
     width: 400px;
-    height: 400px;
+    height: 380px;
+    border: solid 2px #1E62D0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-/* 職員詳細 */
+/* 職員一覧 */
+.users_index_table {
+    width: 500px;
+}
+/* 詳細上部 */
 .edit_delete_wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 500px;
-    margin: 0 auto;
+    margin: 0 auto 10px;
 }
-.users_show_table {
+.create_edit_button {
+    border: solid 1px #888;
+    background-color: #25b7c0;
+}
+.create_edit_button:hover {
+    background-color: #008899;
+}
+
+/* 変更、新規下のmargin */
+.edit_create_form_wrapper {
+    margin-bottom: 20px;
+}
+
+/* 一覧テーブル(職員以外) */
+.sort_wrapper {
+    width: 700px;
+    margin: 0 auto;
+    text-align: right;
+}
+.index_table {
+    width: 700px;
+}
+/* 詳細テーブル全て */
+.show_table {
     width: 500px;
+}
+.show_table th {
+    width: 200px;
 }
 
 /* 貸出・返却ページ */
+.borrow_wrapper {
+    margin-bottom: 20px;
+}
 /* 会員ID照会 */
 .borrow_form_wrapper {
-    margin: 0 auto;
+    margin: 0 auto 40px;
     width: 400px;
     height: 200px;
     display: flex;
@@ -108,65 +197,21 @@ h1 {
 
 /*検索ボタン*/
 #sbtn {
-    width: 50px; /*検索ボタンの横幅*/
-    height: 30px; /*検索ボタンの縦幅*/
-    /* position:relative;/*検索ボタンの位置*/
-    left: auto; /*検索ボタンの位置調整*/
-    top: 0;
-    border-radius: 0 2px 2px 0; /*検索ボタンの角を丸める*/
-    background: #7fbfff; /*検索ボタンの背景カラー*/
-    border: none; /*検索ボタンの枠線を消す*/
-    color: #fff; /*検索ボタンのテキストカラー*/
-    font-weight: bold; /*検索ボタンのテキスト太字*/
-    font-size: 16px; /*検索ボタンのフォントサイズ*/
+    width: 70px;
+    height: 30px;
+    background: skyblue;
+    border: solid 1px #888;
+    border-radius: 5px;
+    color: #fff;
 }
-/*検索ボタンマウスオーバー時*/
-#sbtn:hover {
-    color: #666; /*検索ボタンマウスオーバー時のフォントカラー*/
+/* 検索ボタンマウスオーバー時*/ 
+ #sbtn:hover {
+    color: #666;
 }
 
-/* テーブルの設定 */
-table {
-    text-align: center;
-    border-collapse: collapse;
-    margin: 0 auto;
-}
-/* テーブルの見出し */
-th {
-    background-color: paleturquoise;
-    color: saddlebrown;
-}
-/* テーブルの要素の設定 */
-th,
-td {
-    border: solid 1px;
-    padding: 10px;
-}
-td {
-	background: #eee;
-}
-tr:nth-child(odd) td {
-	background: #fff;
-}
-
-/* Pタグの設定 */
-.new_button {
-    background-color: skyblue;
-    width: 100px;
-    padding: 10px;
-    margin-bottom: 15px;
-    margin-left: 45%;
-    text-align: center;
-    border-radius: 20px;
-}
-/* Aタグの文字の設定 */
-.text {
-    color: snow;
-}
 /* ページリンクの設定 */
 nav ul{
-    margin-top: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     text-align: center; 
     justify-content: center;
 }
