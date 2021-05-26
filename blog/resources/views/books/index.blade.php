@@ -3,7 +3,7 @@
 @section('content')
 <h1>登録書籍</h1>
 <div class="main_form">
-    <p class="new_button"><a href="{{route('catalogs.create')}}" class="text">新規登録</a></p>
+    <p class="new_button"><a href="{{ route('catalogs.isbn') }}" class="text">新規登録</a></p>
     <button id="search_show">検索フォームを表示/非表示</button>
     <div id="search_form">     
         <form action="{{ route('catalogs.index')}}" method="post">

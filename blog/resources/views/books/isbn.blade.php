@@ -1,11 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{ route(s) }}" method="post">
-        <p><label>ISBN番号を入力</label></p>
-        <form action="" method="post">
-            <input type="text" name="ISBN_id">
-            <button type="submit">検索</button>
-        </form>
+    <h1>ISBN番号で登録</h1>
+    @include('commons/flash')
+    <form action="{{ route('catalogs.check')}}" method="post">
+        @csrf
+        <p><input type="number" name="isbn_id" placeholder="ISBN_id(ハイフンなし)" required></p>
+        <select name="genre_id" >
+            <option value="" disabled selected style='display:none;'>ジャンル</option>
+        @foreach($genres as $genre)
+            <option value="{{$genre->id}}"{{request('genre_id')==$genre->id?'selected':''}}>
+                {{$genre->id}} {{$genre->genre}}
+            </option>
+        @endforeach
+        </select>
+        <p><button type="submit">登録</button></p>
     </form>
+    <a href="{{ route('catalogs.index') }}">書籍一覧へ</a>
 @endsection

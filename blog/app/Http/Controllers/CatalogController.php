@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Catalog;
 use App\Genre;
 use App\Ledger;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller
@@ -14,6 +15,47 @@ class CatalogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function isbn(){
+        $genres = Genre::all();
+        
+        return view('books.isbn', ['genres' => $genres]);
+    }
+
+    public function check(Request $request){
+        $this->validate($request, [
+            'isbn_id'=>'required|unique:catalogs,ISBN_id',
+        ]);
+        $isbn = $request->isbn_id;
+        $url = 'https://api.openbd.jp/v1/get?isbn=' . $isbn;
+        $json = file_get_contents($url);
+        $data = json_decode($json);
+        if($data[0] == null ){
+            $book = Catalog::with('genre');
+            $genres = Genre::withCount('catalogs')->get();
+            return view('books.create', ['book' => $book, 'genres'=>$genres, 'isbn' =>$isbn]);
+        } else{
+            $openbd = $data[0];
+            $authors = '';
+            foreach ($openbd->onix->DescriptiveDetail->Contributor as $value) {
+                $authors .= $value->PersonName->content . ',';
+            }
+            $book = new Catalog;
+            $book->ISBN_id =  $request->isbn_id;
+            $book->title = $openbd->summary->title;
+            $book->author = substr($authors, 0, -1);;
+            $book->genre_id = $request->genre_id;
+            $book->publisher = $openbd->summary->publisher;
+            $book->publisher_date = date("Y-m-d", strtotime($openbd->summary->pubdate));
+            if(!empty($openbd->summary->cover)){
+            $book->book_img = $openbd->summary->cover;
+            }else{
+                $book->book_img = "/images/noimage.png";
+            }
+            $book->save();
+            $books = Catalog::all();
+            return redirect(route('catalogs.index',['books' => $books]));  
+        }
+    }
     public function index(Request $request)
     {
         $query = Catalog::with('genre')->with('ledgers');
@@ -63,6 +105,7 @@ class CatalogController extends Controller
      */
     public function store(Request $request)
     {
+        
         $this->validate($request, [
             'ISBN_id'=>'required|integer|max:13',
             'title'=>'required',
@@ -78,6 +121,7 @@ class CatalogController extends Controller
         $book->genre_id = $request->genre_id;
         $book->publisher = $request->publisher;
         $book->publisher_date = $request->publisher_date;
+        $book->book_img = "/images/noimage.png";
         $book->timestamps = false;
         $book->save();
         $books = Catalog::all();

@@ -8,7 +8,7 @@ class Catalog extends Model
 {
     //
     public $timestamps = false;
-    protected $fillable = ['ISBN_id', 'title', 'genre_id', 'author', 'publisher', 'publisher_date'];
+    protected $fillable = ['ISBN_id', 'title', 'genre_id', 'author', 'publisher', 'publisher_date', 'book_img'];
     public function genre()
     {
         return $this->belongsTo(Genre::class);
