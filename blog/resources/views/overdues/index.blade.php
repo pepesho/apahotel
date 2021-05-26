@@ -25,6 +25,8 @@
         <tr>
             <th>会員ID</th>
             <th>延滞者</th>
+            <th>貸出番号</th>
+            <th>延滞している本</th>
             <th>メールアドレス</th>
             <th>返却日</th>
         </tr>
@@ -32,10 +34,12 @@
             <tr>
                 <th>{{ $overdue->member_id}}</th>
                 <th>{{ $overdue->member->name }}</th>
+                <th>{{ $overdue->ledger->id }}</th>
+                <th>{{ $overdue->ledger->catalog->title }}</th>
                 <th>{{ $overdue->member->email}}</th>
                 <th>{{ $overdue->return_date }}</th>
             </tr>
         @endforeach
     </table>
-    {{-- {{ $overdues->appends(Request::all())->links() }} --}}
+    {{ $overdues->appends(Request::all())->links() }}
 @endsection

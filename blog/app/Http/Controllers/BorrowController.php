@@ -42,12 +42,11 @@ class BorrowController extends Controller
         $time = \Carbon\Carbon::now()->subDays(60);
         $borrow = Borrow::with(['ledger.catalog','member']);
         $this->validate($request, [
-            'ledger_id'=>'required|unique:borrows,ledger_id',
+            'ledger_id'=>'required|unique:borrows,ledger_id|exists:ledgers,id',
             'member_id'=>'required|exists:members,id',
         ]);
         $borrow = $borrow->get();
         $count = $borrow->where('member_id', $request->member_id)->count();
-        // dd($count);
         //データベースへの追加
         $borrow = new Borrow;
         $borrow->ledger_id = $request->ledger_id;
