@@ -49,5 +49,6 @@
         <td>{{$book->publisher_date}}</td>
     </tr>
 </table>
+<p><a href="{{$book->book_img}}"><img src="{{ $book->book_img }}" alt="本の画像" width="30%" height="30%"></a></p>
 <a href="{{ route('catalogs.index') }}">一覧ページに戻る</a> 
 @endsection
