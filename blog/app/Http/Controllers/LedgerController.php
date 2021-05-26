@@ -26,8 +26,6 @@ class LedgerController extends Controller
                 $query->where('author','LIKE', '%'.$request->author.'%');
             });
         }
-            // $query = Catalog::where('title', 'LIKE', '%'.$request->title.'%')->get();//->with(['catalog', 'borrows'])->get();
-            //ddd($query);
         if($request->sort=='asc'){
             $ledgers = $query->orderBy('id')->paginate(15);
         } elseif($request->sort=='desc') {
@@ -35,7 +33,6 @@ class LedgerController extends Controller
         } else {
             $ledgers = $query->orderBy('id')->paginate(15);
         }
-        // dd($ledgers);
         return view('ledgers.index', ['ledgers' => $ledgers]);  
     }
 
@@ -58,7 +55,7 @@ class LedgerController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'catalog_id'=>'required|unique',
+            'catalog_id'=>'required',
         ]);
         $ledger = new \App\Ledger;
         $ledger->catalog_id = $request->catalog_id;
