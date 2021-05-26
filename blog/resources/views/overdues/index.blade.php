@@ -39,12 +39,12 @@
         </tr>
         @foreach ($overdues as $overdue)
             <tr>
-                <th>{{ $overdue->member_id}}</th>
-                <th>{{ $overdue->member->name }}</th>
-                <th>{{ $overdue->ledger->id }}</th>
-                <th>{{ $overdue->ledger->catalog->title }}</th>
-                <th>{{ $overdue->member->email}}</th>
-                <th>{{ $overdue->return_date }}</th>
+                <td>{{ $overdue->member_id}}</td>
+                <td>{{ $overdue->member->name }}</td>
+                <td>{{ $overdue->ledger->id }}</td>
+                <td>{{ $overdue->ledger->catalog->title }}</td>
+                <td>{{ $overdue->member->email}}</td>
+                <td>{{ $overdue->return_date }}</td>
             </tr>
         @endforeach
     </table>

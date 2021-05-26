@@ -6,12 +6,12 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   background-color: #bdd3da;
+   background-color: #d1e0ad;
 }
 /* アイコン自体 */
 .fas {
    font-size: 50px;
-   color: #1e62d0;
+   color: #067e8b;
 }
 /* テキスト */
 .header_text {

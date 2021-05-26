@@ -1,7 +1,18 @@
+* {
+    box-sizing: border-box;
+    color: #552c19;
+}
+
 /* エラーメッセージ表示変更 */
 .alert {
     color: red;
     list-style: none;
+    z-index:-1;
+}
+
+/* メイン */
+main {
+    margin-bottom: 20px;
 }
 
 /* ボディ */
@@ -11,7 +22,7 @@ body {
 
 /* ヘッダー */
 header {
-    background-color: #bdd3da;
+    background-color: #abe6c5;
 }
 
 /* ナビゲーション */
@@ -23,30 +34,17 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #bdd3da;
+    background-color: #abe6c5;
 }
 /* アイコン自体 */
 .fas {
     font-size: 50px;
-    color: #1e62d0;
+    color: #235a45;
 }
-/* トップに戻るaタグ */
-.nav_top {
-    margin-left: 20px;
-}
-.nav_top:hover {
-    text-decoration: none;
-}
-/* トップに戻る(図書管理システム) */
-.nav_top_text {
-    font-size: 30px;
-    color: black;
-    font-weight: bold;
-    font-family: sans-serif;
-}
-/* ログアウトするaタグ */
-.nav_logout {
-    margin-right: 20px;
+/* ナビのaタグ */
+.nav_top,.nav_logout {
+    margin: 10px;
+    padding: 10px;
 }
 
 /* メイン */
@@ -68,6 +66,7 @@ h1 {
     background-color: #ccccff;
 }
 #search_show {
+    background-color: #fff;
     border-radius: 5px;
     outline: none;
     margin: 0 auto 10px;
@@ -93,19 +92,20 @@ h1 {
 /* テーブル */
 table {
     text-align: center;
+    border: solid 2px #000;
     border-collapse: collapse;
     margin: 0 auto 20px;
 }
-th {
-    background-color: paleturquoise;
-    /* color: saddlebrown; */
-}
 th,td {
-    border: solid 1px;
+    border: solid 1px #000;
     padding: 10px;
 }
+th {
+    background-color: #235a45;
+    color: #fff;
+}
 td {
-	background: #eee;
+	background: #c0e0c5;
 }
 tr:nth-child(odd) td {
 	background: #fff;
@@ -151,7 +151,7 @@ tr:nth-child(odd) td {
 }
 .create_edit_button {
     border: solid 1px #888;
-    background-color: #25b7c0;
+    background-color: #99ad69;
 }
 .create_edit_button:hover {
     background-color: #008899;
@@ -161,15 +161,24 @@ tr:nth-child(odd) td {
 .edit_create_form_wrapper {
     margin-bottom: 20px;
 }
-
-/* 一覧テーブル(職員以外) */
-.sort_wrapper {
+/* 職員一覧テーブル */
+.member_sort_wrapper {
     width: 700px;
     margin: 0 auto;
     text-align: right;
 }
-.index_table {
+.member_index_table {
     width: 700px;
+}
+
+/* 一覧テーブル(職員以外) */
+.sort_wrapper {
+    width: 90%;
+    margin: 0 auto;
+    text-align: right;
+}
+.index_table {
+    width: 90%;
 }
 /* 詳細テーブル全て */
 .show_table {
@@ -181,10 +190,15 @@ tr:nth-child(odd) td {
 
 /* 貸出・返却ページ */
 .borrow_wrapper {
+    width: 100%;
+}
+.lend_wrapper,.return_wrapper {
+    float: left;
+    width: 50%;
     margin-bottom: 20px;
 }
 /* 会員ID照会 */
-.borrow_form_wrapper {
+.lend_form_wrapper,.return_form_wrapper {
     margin: 0 auto 40px;
     width: 400px;
     height: 200px;
@@ -193,16 +207,24 @@ tr:nth-child(odd) td {
     align-items: center;
     border: solid 2px #1E62D0;
 }
+.return_wrapper {
+    border-left: solid 1px black;
+}
+.return_table {
+    width: 90%;
+    margin: 0 auto 20px;
+}
 
 
 /*検索ボタン*/
 #sbtn {
-    width: 70px;
-    height: 30px;
+    width: 80px;
+    height: 40px;
     background: skyblue;
     border: solid 1px #888;
     border-radius: 5px;
     color: #fff;
+    font-size: 18px;
 }
 /* 検索ボタンマウスオーバー時*/ 
  #sbtn:hover {
