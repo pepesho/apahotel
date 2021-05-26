@@ -80,7 +80,7 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name'=>'required',
-            'email'=>'required|email|unique',
+            'email'=>'required|email',
         ]);
         $user = User::find($id);
         $user->name =  $request->name;

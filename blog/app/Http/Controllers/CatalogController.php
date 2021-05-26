@@ -149,7 +149,8 @@ class CatalogController extends Controller
     public function edit($id)
     {
         $book = Catalog::find($id);
-        return view('books.edit',['book' => $book]);
+        $genres = Genre::withCount('catalogs')->get();
+        return view('books.edit',['book' => $book, 'genres' => $genres]);
     }
 
     /**
