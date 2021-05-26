@@ -4,7 +4,7 @@
 <h1>職員詳細</h1>
 <div class="edit_delete_wrapper">
     <a href="{{ route('users.edit',$user->id) }}" class="btn btn-primary create_edit_button">変更する</a>
-    <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+    <form action="{{ route('users.destroy', $user->id) }}" method="POST" id="delete-form">
         @csrf
         @method('delete')
         <button type="submit" onclick="deleteUser()"  class="btn btn-primary">削除する</button>

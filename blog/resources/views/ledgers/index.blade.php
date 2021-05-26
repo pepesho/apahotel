@@ -28,17 +28,17 @@
 
 <table class="index_table">
     <tr>
-        <th>書籍ID</th>
-        <th id="table1">タイトル</th>
+        <th>書籍<br>ID</th>
+        <th>タイトル</th>
         <th>著者</th>
-        <th id="table1">入荷日</th>
+        <th>入荷日</th>
         <th>貸出可否</th>
     </tr>
 @foreach ($ledgers as $ledger)
     <tr>
-        <td id="table1"><a href="{{ route('ledgers.show', $ledger->id) }}">{{ $ledger->id }}</a></td>
+        <td><a href="{{ route('ledgers.show', $ledger->id) }}">{{ $ledger->id }}</a></td>
         <td>{{ $ledger->catalog->title }}</td>
-        <td id="table1">{{ $ledger->catalog->author }}</td>
+        <td>{{ $ledger->catalog->author }}</td>
         <td>{{ $ledger->arrival_day }}</td>
         <td>
             @isset($ledger->borrows)

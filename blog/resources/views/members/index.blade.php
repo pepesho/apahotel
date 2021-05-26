@@ -15,7 +15,7 @@
         <input type="submit" value="検索" id="sbtn">
     </form>
 </div>
-<div class="sort_wrapper">
+<div class="member_sort_wrapper">
     <form action="{{ route('members.index') }}" method="post">
         @csrf
         @method('get')
@@ -26,7 +26,7 @@
         </select>
     </form>
 </div>
-<table class="index_table">
+<table class="member_index_table">
     <tr>
         <th>会員ID</th>
         <th>名前</th>

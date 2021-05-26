@@ -42,12 +42,12 @@
     </div>
     <table class="index_table">
         <tr>
-            <th>カタログID</th>
+            <th>カタログ<br>ID</th>
             <th>ISBN番号</th>
             <th>タイトル</th>
-            <th>ジャンルID</th>
+            <th>ジャンル<br>ID</th>
             <th>著者名</th>
-            <th>在庫の追加</th>
+            <th>在庫<br>の<br>追加</th>
         </tr>
     @foreach ($books as $book)
         <tr>
