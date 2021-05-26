@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>会員一覧</h1>
-<p class="new_button"><a href="{{ route('members.create')}}" class="text">新規登録</a></p>
+<p><a href="{{ route('members.create')}}" class="btn btn-primary create_edit_button">新規登録</a></p>
 <button id="search_show">検索フォームの表示/非表示</button>
 <div id="search_form">
     <form action="{{ route('members.index')}}" method="post">
@@ -15,6 +15,7 @@
         <input type="submit" value="検索" id="sbtn">
     </form>
 </div>
+<div class="sort_wrapper">
     <form action="{{ route('members.index') }}" method="post">
         @csrf
         @method('get')
@@ -24,8 +25,8 @@
             <option value="desc">降順（会員ID）</option>
         </select>
     </form>
-
-<table>
+</div>
+<table class="index_table">
     <tr>
         <th>会員ID</th>
         <th>名前</th>

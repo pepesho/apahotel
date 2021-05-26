@@ -1,5 +1,6 @@
 .menu_wrapper {
    position: absolute;
+   z-index: -1;
    top: 50%;
    left: 50%;
    margin-top: -183px;

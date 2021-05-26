@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <h1>館内書籍一覧</h1>
-<p class="new_button"><a href="{{ route('ledgers.create') }}" class="text">新規入荷</a></p>
+<p><a href="{{ route('ledgers.create') }}" class="btn btn-primary create_edit_button">新規入荷</a></p>
 <button id="search_show">検索フォームの表示/非表示</button>
 <div id="search_form">
     <form action="{{ route('ledgers.index')}}" method="post">
@@ -14,6 +14,7 @@
         <input type="submit" value="検索" id="sbtn">
     </form>
 </div>
+<div class="sort_wrapper">
     <form action="{{ route('ledgers.index') }}" method="post">
         @csrf
         @method('get')
@@ -23,8 +24,9 @@
             <option value="desc">降順（書籍ID）</option>
         </select>
     </form>
+</div>
 
-<table>
+<table class="index_table">
     <tr>
         <th>書籍ID</th>
         <th id="table1">タイトル</th>

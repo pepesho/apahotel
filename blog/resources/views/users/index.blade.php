@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>職員一覧</h1>
-<table>
+<table class="users_index_table">
     <tr>
         <th>職員番号</th>
         <th>名前</th>

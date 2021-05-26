@@ -3,7 +3,7 @@
 @section('content')
 <h1>登録書籍</h1>
 <div class="main_form">
-    <p class="new_button"><a href="{{route('catalogs.create')}}" class="text">新規登録</a></p>
+    <p><a href="{{route('catalogs.isbn')}}" class="btn btn-primary create_edit_button">新規登録</a></p>
     <button id="search_show">検索フォームを表示/非表示</button>
     <div id="search_form">     
         <form action="{{ route('catalogs.index')}}" method="post">
@@ -28,17 +28,18 @@
             <input type="submit" value="検索" id="sbtn">
         </form>
     </div>
-    <form action="{{ route('catalogs.index') }}" method="post">
-        @csrf
-        @method('get')
-        <select name="sort" onchange="submit(this.form)" class="search_form_input">
-            <option value="" disabled selected style='display:none;'>並べ替え</option>
-            <option value="asc">昇順（カタログID）</option>
-            <option value="desc">降順（カタログID）</option>
-        </select>
-    </form>
-    
-    <table>
+    <div class="sort_wrapper">
+        <form action="{{ route('catalogs.index') }}" method="post">
+            @csrf
+            @method('get')
+            <select name="sort" onchange="submit(this.form)" class="search_form_input">
+                <option value="" disabled selected style='display:none;'>並べ替え</option>
+                <option value="asc">昇順（カタログID）</option>
+                <option value="desc">降順（カタログID）</option>
+            </select>
+        </form>
+    </div>
+    <table class="index_table">
         <tr>
             <th>カタログID</th>
             <th>ISBN番号</th>
