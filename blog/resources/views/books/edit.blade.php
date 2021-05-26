@@ -16,7 +16,16 @@
     <dt>著者</dt>
     <dd><input type="text" name="author" value="{{ $book->author }}" class="form_input"></dd>
     <dt>ジャンル</dt>
-    <dd><input type="text" name="genre_id" value="{{ $book->genre_id }}" class="form_input"></dd>
+    <dd>
+    <select name="genre_id" value="{{$book->genre_id}}" id="sbox" class="form_input">
+                <option value="" disabled selected style='display:none;'>ジャンル選択</option>
+            @foreach($genres as $genre)
+                <option value="{{$genre->id}}"{{request('genre_id')==$genre->id?'selected':''}}>
+                    {{$genre->id}} {{$genre->genre}}
+                </option>
+            @endforeach
+            </select>
+    </dd>
     <dt>出版社</dt>
     <dd><input type="text" name="publisher" value="{{ $book->publisher }}" class="form_input"></dd>
     <dt>出版日</dt>

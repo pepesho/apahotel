@@ -107,9 +107,8 @@ class CatalogController extends Controller
     {
         
         $this->validate($request, [
-            'ISBN_id'=>'required|integer|max:13',
+            'ISBN_id'=>'required|max:13',
             'title'=>'required',
-            'author' => 'required',
             'genre_id'=>'required',
             'publisher'=>'required',
             'publisher_date'=>'required|date',
@@ -149,7 +148,8 @@ class CatalogController extends Controller
     public function edit($id)
     {
         $book = Catalog::find($id);
-        return view('books.edit',['book' => $book]);
+        $genres = Genre::withCount('catalogs')->get();
+        return view('books.edit',['book' => $book, 'genres' => $genres]);
     }
 
     /**
