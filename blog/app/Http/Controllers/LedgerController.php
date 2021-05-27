@@ -117,6 +117,6 @@ class LedgerController extends Controller
     {
         $ledger = \App\Ledger::find($id);
         $ledger->delete();
-        return redirect(route('ledgers.index'));
+        return redirect(route('ledgers.index'))->with('msg', '在庫が削除されました');
     }
 }

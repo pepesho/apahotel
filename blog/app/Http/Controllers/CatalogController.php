@@ -32,7 +32,7 @@ class CatalogController extends Controller
         if($data[0] == null ){
             $books = Catalog::with('genre');
             $genres = Genre::withCount('catalogs')->get();
-            return redirect(route('catalogs.index',['books' => $books]))->with('error', 'ISBN番号が見つかりません');
+            return redirect(route('catalogs.index',['books' => $books]))->with('msg', 'ISBN番号が見つかりません');
         } else{
             $openbd = $data[0];
             $authors = '';
