@@ -1,18 +1,13 @@
+/* 全体 */
 * {
     box-sizing: border-box;
-    color: #552c19;
 }
 
-/* エラーメッセージ表示変更 */
+/* エラーメッセージ */
 .alert {
-    color: red;
+    color: #e60033;
     list-style: none;
     z-index:-1;
-}
-
-/* メイン */
-main {
-    margin-bottom: 20px;
 }
 
 /* ボディ */
@@ -21,10 +16,6 @@ body {
 }
 
 /* ヘッダー */
-header {
-    background-color: #abe6c5;
-}
-
 /* ナビゲーション */
 .navigation_wrapper {
     top: 0;
@@ -34,29 +25,32 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #abe6c5;
-}
-/* アイコン自体 */
-.fas {
-    font-size: 50px;
-    color: #235a45;
+    background-color: #c2ddc6;
 }
 /* ナビのaタグ */
 .nav_top,.nav_logout {
     margin: 10px;
     padding: 10px;
 }
+/* ナビのaタグの中のアイコン自体 */
+.fas {
+    font-size: 50px;
+    color: #235a45;
+}
 
 /* メイン */
 main {
     padding-top: 90px;
+    margin-bottom: 20px;
     text-align: center;
 }
 h1 {
     margin: 20px;
 }
+/* inputタグ */
 .form_input {
     width: 250px;
+    margin: 0 0 10px;
     border: solid 1px #888;
     border-radius: 5px;
     background-color: #eee;
@@ -65,27 +59,31 @@ h1 {
 .form_input:focus {
     background-color: #ccccff;
 }
+
+/* 検索フォームの表示/非表示ボタン */
 #search_show {
     background-color: #fff;
     border-radius: 5px;
     outline: none;
     margin: 0 auto 10px;
 }
-#search_form {
+/* search_showボタンで出る検索フォーム */
+/* #search_form {
     width: 400px;
     margin: 0 auto;
+    border: solid 1px #235a45;
     padding: 20px 0;
-    border: solid 1px #1E62D0;
-}
-.search_form_input {
-    margin: 10px auto;
-    width: 200px;
+} */
+/* 並び替え */
+.sort {
+    width: 150px;
+    margin: 10px 0;
     border: solid 1px #888;
     border-radius: 5px;
     background-color: #eee;
     outline: none;
 }
-.search_form_input:focus {
+.sort:focus {
     background-color: #ccccff;
 }
 
@@ -105,7 +103,7 @@ th {
     color: #fff;
 }
 td {
-	background: #c0e0c5;
+	background: #cbdfce;
 }
 tr:nth-child(odd) td {
 	background: #fff;
@@ -115,77 +113,70 @@ tr:nth-child(odd) td {
 .form {
     margin: 0 auto 10px;
 }
+/* 変更、新規登録フォームの下のmargin */
+.edit_create_form_wrapper {
+    margin-bottom: 20px;
+}
 
 /* 職員ページ */
-/* ユーザーフォーム */
-.user_form_wrapper {
+/* 職員情報変更フォーム */
+.users_form_wrapper {
     margin: 0 auto 20px;
     width: 400px;
     height: 250px;
-    /* border: solid 2px #1E62D0; */
     display: flex;
     justify-content: center;
     align-items: center;
  }
-/* 職員登録 */
-.register_form_wrapper {
-    margin: 0 auto 10px;
-    width: 400px;
-    height: 380px;
-    border: solid 2px #1E62D0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-/* 職員一覧 */
-.users_index_table {
-    width: 500px;
-}
-/* 詳細上部 */
-.edit_delete_wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 500px;
-    margin: 0 auto 10px;
-}
-.create_edit_button {
-    border: solid 1px #888;
-    background-color: #99ad69;
-}
-.create_edit_button:hover {
-    background-color: #008899;
-}
-
-/* 変更、新規下のmargin */
-.edit_create_form_wrapper {
-    margin-bottom: 20px;
-}
 /* 職員一覧テーブル */
-.member_sort_wrapper {
-    width: 700px;
+.users_index_table {
+    width: 50%;
+}
+.users_index_table th {
+    min-width: 150px;
+}
+/* 会員一覧テーブルの並び替え */
+.members_sort_wrapper {
+    width: 60%;
     margin: 0 auto;
     text-align: right;
 }
-.member_index_table {
-    width: 700px;
+/* 会員一覧テーブル */
+.members_index_table {
+    width: 60%;
+}
+.members_index_table th {
+    min-width: 150px;
 }
 
-/* 一覧テーブル(職員以外) */
+/* 職員・会員以外の一覧テーブルの並び替え */
 .sort_wrapper {
     width: 90%;
     margin: 0 auto;
     text-align: right;
 }
+/* 職員・会員以外の一覧テーブル */
 .index_table {
     width: 90%;
 }
+.index_table th {
+    min-width: 110px;
+}
+
 /* 詳細テーブル全て */
 .show_table {
     width: 500px;
 }
 .show_table th {
     width: 200px;
+}
+/* 詳細ページ　変更・削除ボタンのラッパー　全て */
+.edit_delete_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    margin: 0 auto 10px;
 }
 
 /* 貸出・返却ページ */
@@ -205,30 +196,39 @@ tr:nth-child(odd) td {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid 2px #1E62D0;
+    border: solid 2px #235a45;
 }
 .return_wrapper {
-    border-left: solid 1px black;
+    border-left: solid 1px #235a45;
 }
 .return_table {
     width: 90%;
     margin: 0 auto 20px;
 }
 
-
 /*検索ボタン*/
-#sbtn {
+/* #sbtn {
     width: 80px;
     height: 40px;
-    background: skyblue;
-    border: solid 1px #888;
+    background: #4da583;
+    border: solid 1px #4da583;
     border-radius: 5px;
     color: #fff;
-    font-size: 18px;
-}
+} */
 /* 検索ボタンマウスオーバー時*/ 
- #sbtn:hover {
-    color: #666;
+ /* #sbtn:hover {
+    background-color: #235a45;
+} */
+
+/* 検索以外のボタン */
+.btn,.btn-primary {
+    color: #fff;
+    border: solid 1px #4da583;
+    background-color: #4da583;
+}
+.btn:hover,.btn-primary:hover {
+    border: solid 1px #235a45;
+    background-color: #235a45;
 }
 
 /* ページリンクの設定 */
@@ -236,4 +236,11 @@ nav ul{
     margin-bottom: 20px;
     text-align: center; 
     justify-content: center;
+}
+
+.image {
+    margin: 10px auto;
+}
+.image img{
+    height: 400px;
 }

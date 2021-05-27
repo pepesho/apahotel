@@ -2,31 +2,31 @@
 
 @section('content')
 <h1>会員一覧</h1>
-<p><a href="{{ route('members.create')}}" class="btn btn-primary create_edit_button">新規登録</a></p>
+<p><a href="{{ route('members.create')}}" class="btn btn-primary">新規登録</a></p>
 <button id="search_show">検索フォームの表示/非表示</button>
 <div id="search_form">
     <form action="{{ route('members.index')}}" method="post">
         @csrf
         @method('get')
-        <input type="search" name="id" value="" placeholder="IDで検索" class="search_form_input">
+        <input type="search" name="id" value="" placeholder="IDで検索" class="form_input">
         <br>
-        <input type="search" name="email" value="" placeholder="メールアドレスで検索" class="search_form_input">
+        <input type="search" name="email" value="" placeholder="メールアドレスで検索" class="form_input">
         <br>
-        <input type="submit" value="検索" id="sbtn">
+        <input type="submit" value="検索" id="sbtn" class="btn btn-primary">
     </form>
 </div>
-<div class="member_sort_wrapper">
+<div class="members_sort_wrapper">
     <form action="{{ route('members.index') }}" method="post">
         @csrf
         @method('get')
-        <select name="sort" onchange="submit(this.form)"  class="search_form_input">
+        <select name="sort" onchange="submit(this.form)"  class="sort">
             <option value="" disabled selected style='display:none;'>並べ替え</option>
             <option value="asc">昇順（会員ID）</option>
             <option value="desc">降順（会員ID）</option>
         </select>
     </form>
 </div>
-<table class="member_index_table">
+<table class="members_index_table">
     <tr>
         <th>会員ID</th>
         <th>名前</th>

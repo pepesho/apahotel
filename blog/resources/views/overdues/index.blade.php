@@ -7,21 +7,21 @@
         <form action="{{ route('overdues.index') }}" method="post">
             @csrf
             @method('get')
-            <input type="search" name="id" value="" placeholder="IDで検索"  class="search_form_input">
+            <input type="search" name="id" value="" placeholder="IDで検索"  class="form_input">
             <br>
-            <input type="search" name="name" value="" placeholder="名前で検索"  class="search_form_input">
+            <input type="search" name="name" value="" placeholder="名前で検索"  class="form_input">
             <br>
-            <input type="search" name="email" value="" placeholder="メールアドレスで検索"  class="search_form_input">
+            <input type="search" name="email" value="" placeholder="メールアドレスで検索"  class="form_input">
             <br>
-            <input type="submit" value="検索" id="sbtn">
+            <input type="submit" value="検索" id="sbtn" class="btn btn-primary">
         </form>
     </div>
     <div class="sort_wrapper">
         <form action="{{ route('overdues.index') }}" method="post">
             @csrf
             @method('get')
-            <select name="sort" onchange="submit(this.form)" class="search_form_input">
-                <option value="">並べ替え</option>
+            <select name="sort" onchange="submit(this.form)" class="sort">
+                <option value="" disabled selected style='display:none;'>並べ替え</option>
                 <option value="asc">昇順（会員ID）</option>
                 <option value="desc">降順（会員ID）</option>
             </select>

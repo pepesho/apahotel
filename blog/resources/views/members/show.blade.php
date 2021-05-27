@@ -3,7 +3,7 @@
 @section('content')
 <h1>会員詳細</h1>
 <div class="edit_delete_wrapper">
-    <a href="{{ route('members.edit',$member->id) }}" class="btn btn-primary create_edit_button">変更する</a>
+    <a href="{{ route('members.edit',$member->id) }}" class="btn btn-primary">変更する</a>
     <form action="{{ route('members.destroy', $member) }}" method="POST" id="delete-form">
         @csrf
         @method('delete')
