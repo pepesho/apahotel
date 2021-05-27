@@ -6,27 +6,31 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   background-color: #d1e0ad;
-}
-/* アイコン自体 */
-.fas {
-   font-size: 50px;
-   color: #067e8b;
+   background-color: #c2ddc6;
 }
 /* テキスト */
 .header_text {
    font-size: 30px;
-   color: black;
    font-weight: bold;
-   font-family: sans-serif;
 }
 
+/* メイン */
 /* ログインフォーム */
 .login_form_wrapper {
    margin: 70px auto 10px;
+   padding: 20px 0;
    width: 400px;
-   height: 250px;
-   border: solid 2px #1E62D0;
+   border: solid 2px #235a45;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+/* 職員登録 */
+.register_form_wrapper {
+   margin: 0 auto 10px;
+   width: 400px;
+   padding: 20px 0;
+   border: solid 2px #235a45;
    display: flex;
    justify-content: center;
    align-items: center;

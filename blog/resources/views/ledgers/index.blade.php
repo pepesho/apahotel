@@ -1,24 +1,24 @@
 @extends('layouts.app')
 @section('content')
 <h1>館内書籍一覧</h1>
-<p><a href="{{ route('ledgers.create') }}" class="btn btn-primary create_edit_button">新規入荷</a></p>
+<p><a href="{{ route('ledgers.create') }}" class="btn btn-primary">新規入荷</a></p>
 <button id="search_show">検索フォームの表示/非表示</button>
 <div id="search_form">
     <form action="{{ route('ledgers.index')}}" method="post">
         @csrf
         @method('get')
-        <input type="search" name="title" value="" placeholder="タイトルで検索" class="search_form_input">
+        <input type="search" name="title" value="" placeholder="タイトルで検索" class="form_input">
         <br>
-        <input type="search" name="author" value="" placeholder="著者名で検索" class="search_form_input">
+        <input type="search" name="author" value="" placeholder="著者名で検索" class="form_input">
         <br>
-        <input type="submit" value="検索" id="sbtn">
+        <input type="submit" value="検索" id="sbtn" class="btn btn-primary">
     </form>
 </div>
 <div class="sort_wrapper">
     <form action="{{ route('ledgers.index') }}" method="post">
         @csrf
         @method('get')
-        <select name="sort" onchange="submit(this.form)" class="search_form_input">
+        <select name="sort" onchange="submit(this.form)" class="sort">
             <option value="" disabled selected style='display:none;'>並べ替え</option>
             <option value="asc">昇順（書籍ID）</option>
             <option value="desc">降順（書籍ID）</option>

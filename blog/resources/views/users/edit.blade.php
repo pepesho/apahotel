@@ -4,8 +4,8 @@
 
 <h1>職員情報の変更</h1>
 @include('commons.flash')
-<div class="user_form_wrapper">
-    <div class="user_form">
+<div class="users_form_wrapper">
+    <div class="users_form">
         <form action="{{ route('users.update', $user->id) }}" method="POST">
             @csrf
             @method('put')
