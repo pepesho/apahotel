@@ -60,13 +60,13 @@ class CatalogController extends Controller
     {
         $query = Catalog::with('genre')->with('ledgers');
         if ($request->ISBN_id) {
-            $query->where('ISBN_id', $request->ISBN_id);
+            $query->where('ISBN_id', 'LIKE','%' . $request->ISBN_id . '%');
         } else  {$query -> select('*');}
         if ($request->title) {
-            $query->where('title', 'LIKE', "%$request->title%");
+            $query->where('title', 'LIKE', '%' . $request->title . '%');
         } else  {$query -> select('*');}
         if ($request->author) {
-            $query->where('author', 'LIKE', "%$request->author%");
+            $query->where('author', 'LIKE', '%' . $request->author . '%');
         } else  {$query -> select('*');}
         if ($request->genre_id) {
             $query->where('genre_id', "$request->genre_id");
