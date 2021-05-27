@@ -10,7 +10,7 @@
             @csrf
             @method('get')
 
-            <input type="search" name="id" value="" placeholder="ISBN_IDで検索" class="form_input">
+            <input type="search" name="ISBN_id" value="" placeholder="ISBN_IDで検索" class="form_input">
             <br>
             <input type="search" name="title" value="" placeholder="タイトルで検索" class="form_input">
             <br>
