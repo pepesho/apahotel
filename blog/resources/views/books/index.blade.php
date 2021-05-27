@@ -4,7 +4,8 @@
 <h1>登録書籍</h1>
 <div class="main_form">
     <p><a href="{{route('catalogs.isbn')}}" class="btn btn-primary">ISBN新規登録</a></p>
-    <button id="search_show">検索フォームを表示/非表示</button>
+    <p><a href="{{ route('catalogs.create') }}" class="btn btn-primary">なかった場合の登録</a></p>
+    <button id="search_show">検索フォームを表示</button>
     <div id="search_form">     
         <form action="{{ route('catalogs.index')}}" method="post">
             @csrf
@@ -28,6 +29,7 @@
             <input type="submit" value="検索" id="sbtn" class="btn btn-primary">
         </form>
     </div>
+    <p>{{ session('msg') }}</p>
     <div class="sort_wrapper">
         <form action="{{ route('catalogs.index') }}" method="post">
             @csrf
@@ -64,6 +66,12 @@
     $('#search_form').hide();
     $('#search_show').click(function (){
         $('#search_form').slideToggle(1000);
+        var elem = document.getElementById("search_show");
+        if (elem.innerHTML === "検索フォームを表示"){
+            elem.innerHTML = "検索フォームを非表示";
+        }else {
+            elem.innerHTML = "検索フォームを表示";
+        }
     });
 </script>
 @endsection

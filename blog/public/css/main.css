@@ -47,6 +47,13 @@ main {
 h1 {
     margin: 20px;
 }
+h1 , h2{
+    text-align: center;
+    background-color: #235A45;
+    color: white;
+    border-radius: 50px;
+    width:auto;
+}
 /* inputタグ */
 .form_input {
     width: 250px;
@@ -62,6 +69,7 @@ h1 {
 
 /* 検索フォームの表示/非表示ボタン */
 #search_show {
+    width: 200px;
     background-color: #fff;
     border-radius: 5px;
     outline: none;
@@ -181,11 +189,13 @@ tr:nth-child(odd) td {
 
 /* 貸出・返却ページ */
 .borrow_wrapper {
+    margin-top: 70px;
+    margin-left: 10%;
     width: 100%;
 }
 .lend_wrapper,.return_wrapper {
     float: left;
-    width: 50%;
+    width: 40%;
     margin-bottom: 20px;
 }
 /* 会員ID照会 */

@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>延滞リスト</h1>
-    <button id="search_show">検索フォームを表示/非表示</button>
+    <button id="search_show">検索フォームを表示</button>
     <div id="search_form"> 
         <form action="{{ route('overdues.index') }}" method="post">
             @csrf
@@ -53,6 +53,12 @@
         $('#search_form').hide();
         $('#search_show').click(function (){
             $('#search_form').slideToggle(1000);
+            var elem = document.getElementById("search_show");
+            if (elem.innerHTML === "検索フォームを表示"){
+                elem.innerHTML = "検索フォームを非表示";
+            }else {
+                elem.innerHTML = "検索フォームを表示";
+            }
         });
     </script>
 @endsection

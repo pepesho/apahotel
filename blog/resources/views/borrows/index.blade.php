@@ -2,7 +2,7 @@
 @section('content')
     {{-- 会員ID検索 --}}
     @include('commons/flash')
-    <h1>貸出・返却</h1>
+    <p>{{ session('msg') }}</p>
     <div class="borrow_wrapper">
         <div class="lend_wrapper">
             <h2>貸出</h2>
@@ -16,7 +16,6 @@
                     </form>
                 </div>
             </div>
-            <p>{{ session('error') }}</p>
         </div>
         <div class="return_wrapper">
             <h2>返却</h2>
