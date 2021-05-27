@@ -53,7 +53,7 @@ class CatalogController extends Controller
             }
             $book->save();
             $books = Catalog::all();
-            return redirect(route('catalogs.index',['books' => $books]))->with('register', '書籍が登録されました');  
+            return redirect(route('catalogs.index',['books' => $books]))->with('msg', '書籍が登録されました');  
         }
     }
     public function index(Request $request)
@@ -124,7 +124,7 @@ class CatalogController extends Controller
         $book->timestamps = false;
         $book->save();
         $books = Catalog::all();
-        return redirect(route('catalogs.index',['books' => $books]))->with('register', '書籍が登録されました');
+        return redirect(route('catalogs.index',['books' => $books]))->with('msg', '書籍が登録されました');
     }
 
     /**
