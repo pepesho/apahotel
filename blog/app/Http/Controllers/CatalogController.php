@@ -30,9 +30,9 @@ class CatalogController extends Controller
         $json = file_get_contents($url);
         $data = json_decode($json);
         if($data[0] == null ){
-            $book = Catalog::with('genre');
+            $books = Catalog::with('genre');
             $genres = Genre::withCount('catalogs')->get();
-            return view('books.create', ['book' => $book, 'genres'=>$genres, 'isbn' =>$isbn]);
+            return redirect(route('catalogs.index',['books' => $books]))->with('error', 'ISBN番号が見つかりません');
         } else{
             $openbd = $data[0];
             $authors = '';
