@@ -68,7 +68,7 @@ class MemberController extends Controller
         $member->email=$request->email;
         $member->birthday=$request->birthday;
         $member->save();
-        return redirect(route('members.index'));
+        return redirect(route('members.index'))->with('msg', '会員が登録されました');
     }
 
     /**
@@ -123,6 +123,6 @@ class MemberController extends Controller
     public function destroy(Member $member)
     {
         $member->delete();
-        return redirect(route('members.index'));
+        return redirect(route('members.index'))->with('msg', '会員が登録されました');
     }
 }

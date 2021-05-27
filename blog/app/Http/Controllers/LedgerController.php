@@ -61,7 +61,7 @@ class LedgerController extends Controller
         $ledger->catalog_id = $request->catalog_id;
         $ledger->arrival_day = \Carbon\Carbon::now();
         $ledger->save();
-        return redirect(route('ledgers.index'));
+        return redirect(route('ledgers.index'))->with('msg', '在庫が追加されました');
     }
 
     /**
