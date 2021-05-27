@@ -5,7 +5,7 @@
     @include('commons/flash')
     <form action="{{ route('catalogs.check')}}" method="post">
         @csrf
-        <p><input type="number" name="isbn_id" class="form_input" placeholder="ISBN_id(ハイフンなし)" required></p>
+        <p><input type="number" name="isbn_id" class="form_input" placeholder="ISBN番号(ハイフンなし)" required></p>
         <p><select name="genre_id" class="form_input">
             <option value="" disabled selected style='display:none;'>ジャンル</option>
         @foreach($genres as $genre)
