@@ -19,7 +19,7 @@ class CreateLedgersTable extends Migration
             $table->date('arrival_day');
 
             //外部キー設定
-            $table->foreign('catalog_id')->references('id')->on('catalogs')->onDelete('cascade');
+            $table->foreign('catalog_id')->references('id')->on('catalogs');
 
         });
     }
