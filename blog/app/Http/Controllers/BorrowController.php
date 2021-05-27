@@ -53,7 +53,7 @@ class BorrowController extends Controller
         if ($count < 5) {
             $borrow->member_id = $request->member_id;
         } else {
-            return redirect(route('borrows.index'))->with('error', '上限です！！！');
+            return redirect(route('borrows.index'))->with('msg', '上限です！！！');
         }
         $borrow->borrow_date = \Carbon\Carbon::now();
         if ($borrow->ledger->catalog->publisher_date >= $time) {
@@ -62,7 +62,7 @@ class BorrowController extends Controller
             $borrow->return_date = \Carbon\Carbon::now()->addDays(15);
         }
         $borrow->save();
-        return redirect(route('borrows.index'));
+        return redirect(route('borrows.index'))->with('msg', '書籍が貸し出されました');
     }
     /**
      * Display the specified resource.
@@ -116,6 +116,6 @@ class BorrowController extends Controller
         foreach ($checked as $id) {
             Borrow::where("id",$id)->delete(); //Assuming you have a Todo model. 
         }
-        return redirect(route('borrows.index'));
+        return redirect(route('borrows.index'))->with('msg', '書籍が返却されました');
     }
 }
