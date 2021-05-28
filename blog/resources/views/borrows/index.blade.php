@@ -2,15 +2,15 @@
 @section('content')
     {{-- 会員ID検索 --}}
     @include('commons/flash')
-    <p>{{ session('msg') }}</p>
+    <p class="msg">{{ session('msg') }}</p>
     <div class="borrow_wrapper">
         <div class="lend_wrapper">
             <h2>貸出</h2>
             <div class="lend_form_wrapper">
                 <div class="lend_form">
-                    <form action="{{ route('borrows.store') }}" method="post">
+                    <form action="{{ route('borrow.confirm') }}" method="get">
                     @csrf
-                    <p>本のID<br><input type="text" name="ledger_id" class="form_input"></p>
+                    <p>書籍ID<br><input type="text" name="ledger_id" class="form_input"></p>
                     <p>会員ID<br><input type="text" name="member_id" value="" class="form_input"></p>
                     <button id="borrow" class="btn btn-primary">貸出</button>
                     </form>

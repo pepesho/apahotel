@@ -44,6 +44,20 @@ class MemberController extends Controller
         return view('members.create', ['member'=>$member]);
     }
 
+    public function confirm(Request $request)
+    {
+        $this->validate($request,[
+            'name' => 'required|max:255',
+            'postal' => 'required|integer|max:10000000',
+            'address' => 'required|max:255',
+            'tel' => 'required|max:13',
+            'email' => 'required|email|max:255|unique:members,email',
+            'birthday' => 'required|date'
+        ]);
+        
+        $member = $request;
+        return view('members/confirm', ['member' => $member]);
+    }
     /**
      * Store a newly created resource in storage.
      *

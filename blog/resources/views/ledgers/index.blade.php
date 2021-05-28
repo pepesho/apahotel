@@ -14,7 +14,7 @@
         <input type="submit" value="検索" id="sbtn" class="btn btn-primary">
     </form>
 </div>
-<p>{{ session('msg') }}</p>
+<p class="msg">{{ session('msg') }}</p>
 <div class="sort_wrapper">
     <form action="{{ route('ledgers.index') }}" method="post">
         @csrf

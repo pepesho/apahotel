@@ -29,7 +29,7 @@
             <input type="submit" value="検索" id="sbtn" class="btn btn-primary">
         </form>
     </div>
-    <p>{{ session('msg') }}</p>
+    <p class="msg">{{ session('msg') }}</p>
     <div class="sort_wrapper">
         <form action="{{ route('catalogs.index') }}" method="post">
             @csrf
@@ -48,7 +48,7 @@
             <th>タイトル</th>
             <th>ジャンル<br>ID</th>
             <th>著者名</th>
-            <th>在庫の<br>追加</th>
+            <th>在庫数</th>
         </tr>
     @foreach ($books as $book)
         <tr>
@@ -56,7 +56,7 @@
             <td>{{ $book->ISBN_id }}</td>
             <td><a href="{{ route('catalogs.show', $book->id )}}">{{ $book->title }}</a></td>
             <td>{{$book->genre_id}}</td><td>{{$book->author}}</td>
-            <td><a href="{{route('ledgers.create',$book->id)}}">追加</a></td>
+            <td>{{ $book->ledgers_count }}</td>
         </tr>
     @endforeach
     </table>

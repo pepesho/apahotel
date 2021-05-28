@@ -70,6 +70,18 @@ class BorrowController extends Controller
      * @param  \App\Borrow  $borrow
      * @return \Illuminate\Http\Response
      */
+    public function confirm(Request $request)
+    {
+        $this->validate($request,[
+            'ledger_id'=>'required|unique:borrows,ledger_id|exists:ledgers,id',
+            'member_id'=>'required|exists:members,id',
+        ]);
+        $member = Member::find($request->member_id);
+        $ledger = Ledger::with('catalog')->find($request->ledger_id);
+        $borrow = $request;
+        return view('borrows/confirm', ['borrow' => $borrow, 'member' => $member, 'ledger' => $ledger]);
+    }
+
     public function show(Borrow $borrow)
     {
         // $borrows = Borrow::all();

@@ -46,6 +46,17 @@ class LedgerController extends Controller
         return view('ledgers.create');
     }
 
+    public function confirm(Request $request)
+    {
+        $this->validate($request,[
+            'catalog_id'=>'required|exists:catalogs,id',
+        ]);
+        $catalog = Catalog::find($request->catalog_id);
+        $ledger = $request;
+        $date = \Carbon\Carbon::now();
+        return view('ledgers/confirm', ['ledger' => $ledger, 'catalog' => $catalog, 'date' => $date]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
