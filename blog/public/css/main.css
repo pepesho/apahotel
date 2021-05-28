@@ -254,3 +254,11 @@ nav ul{
 .image img{
     height: 400px;
 }
+.msg {
+    margin-top: 10px;
+    color: cornsilk;
+    background-color: darkgreen;
+    height: auto;
+    text-align: center;
+    font-size: 20px;
+}

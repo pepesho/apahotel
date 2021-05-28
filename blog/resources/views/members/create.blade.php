@@ -3,7 +3,7 @@
 <h1>会員登録</h1>
 @include('commons.flash')
 <div class="edit_create_form_wrapper">
-    <form action="{{route('members.store')}}" method="post" class="form">
+    <form action="{{route('member.confirm')}}" method="get" class="form">
         @csrf
         <dl>
             <dt>名前</dt>

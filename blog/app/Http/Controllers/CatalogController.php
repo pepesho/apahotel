@@ -15,13 +15,12 @@ class CatalogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function isbn(){
+    public function isbn() {
         $genres = Genre::all();
-        
         return view('books.isbn', ['genres' => $genres]);
     }
 
-    public function check(Request $request){
+    public function check(Request $request) {
         $this->validate($request, [
             'isbn_id'=>'required|unique:catalogs,ISBN_id',
         ]);
@@ -56,21 +55,22 @@ class CatalogController extends Controller
             return redirect(route('catalogs.index',['books' => $books]))->with('msg', '書籍が登録されました');  
         }
     }
+
     public function index(Request $request)
     {
-        $query = Catalog::with('genre')->with('ledgers');
+        $query = Catalog::withCount('ledgers');
         if ($request->ISBN_id) {
             $query->where('ISBN_id', 'LIKE','%' . $request->ISBN_id . '%');
-        } else  {$query -> select('*');}
+        } 
         if ($request->title) {
             $query->where('title', 'LIKE', '%' . $request->title . '%');
-        } else  {$query -> select('*');}
+        } 
         if ($request->author) {
             $query->where('author', 'LIKE', '%' . $request->author . '%');
-        } else  {$query -> select('*');}
+        } 
         if ($request->genre_id) {
             $query->where('genre_id', "$request->genre_id");
-        } else  {$query -> select('*');}
+        } 
         //$books = $query->orderBy('id')->paginate(20);
         if($request->sort=='asc'){
             $books = $query->orderBy('id')->paginate(20);
@@ -80,8 +80,6 @@ class CatalogController extends Controller
             $books = $query->orderBy('id')->paginate(20);
         }
         $genres = Genre::withCount('catalogs')->get();
-        // $ledgers = Ledger::withCount('catalog')->get();
-        // dd($books);
         return view('books.index',['books' => $books, 'genres'=>$genres]);
     }
 
@@ -125,6 +123,30 @@ class CatalogController extends Controller
         $book->save();
         $books = Catalog::all();
         return redirect(route('catalogs.index',['books' => $books]))->with('msg', '書籍が登録されました');
+    }
+
+    public function confirm(Request $request)
+    {
+        $this->validate($request, [
+            'isbn_id'=>'required|unique:catalogs,ISBN_id',
+        ]);
+        $isbn = $request->isbn_id;
+        $url = 'https://api.openbd.jp/v1/get?isbn=' . $isbn;
+        $json = file_get_contents($url);
+        $data = json_decode($json);
+        if ($data[0] == null) {
+            $books = Catalog::with('genre');
+            $genres = Genre::withCount('catalogs')->get();
+            return redirect(route('catalogs.index', ['books' => $books]))->with('msg', 'ISBN番号が見つかりません');
+        } else {
+            $openbd = $data[0];
+            $authors = '';
+            foreach ($openbd->onix->DescriptiveDetail->Contributor as $value) {
+                $authors .= $value->PersonName->content . ',';
+            }
+            $catalog = $request;
+            return view('books/confirm', ['catalog' => $catalog]);
+        }
     }
 
     /**

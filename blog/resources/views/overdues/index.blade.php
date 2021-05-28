@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>延滞リスト</h1>
+    <h1>延滞者リスト</h1>
     <button id="search_show">検索フォームを表示</button>
     <div id="search_form"> 
         <form action="{{ route('overdues.index') }}" method="post">

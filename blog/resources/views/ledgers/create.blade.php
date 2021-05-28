@@ -5,10 +5,10 @@
 <h1>書籍在庫の追加</h1>
 @include('commons/flash')
 <div class="edit_create_form_wrapper">
-    <form action="{{ route('ledgers.store') }}" method="POST">
+    <form action="{{ route('ledger.confirm') }}" method="get">
     @csrf
     <dl>
-        <dt>書籍番号</dt>
+        <dt>カタログID</dt>
         <dd><input type="text" name="catalog_id" class="form_input"></dd>
     </dl>
     <button type="submit" class="btn btn-primary">登録する</button>
